@@ -75,6 +75,74 @@
         </div>
       </section>
 
+      <!-- TOP RANKINGS CHARTS SECTION -->
+      <section class="top-rankings-section">
+        <h2>Live Top Rankings</h2>
+        
+        <!-- CRYPTO VOTING RANKING -->
+        <div class="ranking-chart">
+          <div class="chart-header">
+            <h3>Crypto Voting Ranking</h3>
+            <div class="chart-stats">
+              <span class="rank-position">Position: <strong id="cryptoPos">1</strong></span>
+              <span class="rank-change"><span id="cryptoArrow">↑</span> <span id="cryptoPercent">+5.2%</span></span>
+            </div>
+          </div>
+          <div class="chart-container-live">
+            <svg id="cryptoChart" class="live-chart" viewBox="0 0 600 200"></svg>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"><strong id="cryptoVotes">1,245</strong> total votes</span>
+            <span class="legend-item">Top: <strong id="cryptoTop">Bitcoin</strong></span>
+          </div>
+        </div>
+
+        <!-- DIGITAL WALLET VOTING RANKING -->
+        <div class="ranking-chart">
+          <div class="chart-header">
+            <h3>Digital Wallet Voting Ranking</h3>
+            <div class="chart-stats">
+              <span class="rank-position">Position: <strong id="walletPos">1</strong></span>
+              <span class="rank-change"><span id="walletArrow">↑</span> <span id="walletPercent">+3.8%</span></span>
+            </div>
+          </div>
+          <div class="chart-container-live">
+            <svg id="walletChart" class="live-chart" viewBox="0 0 600 200"></svg>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"><strong id="walletVotes">892</strong> total votes</span>
+            <span class="legend-item">Top: <strong id="walletTop">MetaMask</strong></span>
+          </div>
+        </div>
+
+        <!-- MOST VOTING STOCKS RANKING -->
+        <div class="ranking-chart">
+          <div class="chart-header">
+            <h3>
+              <button class="chart-toggle" id="stocksToggle" onclick="toggleStocksRanking()">
+                Most Voting Stocks Ranking
+                <span class="toggle-icon">▼</span>
+              </button>
+            </h3>
+            <div class="chart-stats">
+              <span class="rank-position">Total: <strong id="stocksCount">50</strong> Assets</span>
+            </div>
+          </div>
+          <div id="stocksContent" class="stocks-content">
+            <div class="stocks-table">
+              <div class="table-header">
+                <div class="col-rank">Rank</div>
+                <div class="col-name">Asset Name</div>
+                <div class="col-type">Type</div>
+                <div class="col-votes">Votes</div>
+                <div class="col-change">Change</div>
+              </div>
+              <div id="stocksList" class="table-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- RATING GRID -->
       <section class="ratings-section">
         <h2>Top Rated Assets</h2>
