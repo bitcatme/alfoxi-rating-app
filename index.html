@@ -16,8 +16,7 @@
       <div class="navbar-container">
         <!-- LOGO -->
         <div class="navbar-logo">
-          <div class="logo-icon"></div>
-          <span class="logo-text">ALFOXI</span>
+          <span>ALFOXI Rating</span>
         </div>
 
         <!-- CENTER NAV LINKS -->
@@ -44,34 +43,34 @@
     <div class="app-container">
       <!-- HERO SECTION -->
       <section class="hero-section">
-        <div class="hero-text">
-          <h1>Crypto Rating Platform</h1>
-          <p>Vote on the best crypto tokens and wallets. Guests get 5 free ratings.</p>
-          <div class="hero-cta">
-            <button class="btn-primary">Start Voting</button>
-          </div>
-        </div>
-
-        <!-- VOTING ACCESS PANEL (RIGHT) -->
-        <div class="voting-panel">
-          <div class="panel-box guest-access">
-            <h3>Guest Access</h3>
-            <p class="vote-count"><span id="guestRemaining">5</span> free votes left</p>
-            <p class="small-text">No registration needed</p>
+        <div class="hero-content">
+          <h1>ALFOXI Rating</h1>
+          <p class="hero-subtitle">Vote on the best crypto tokens and wallets.</p>
+          <p class="hero-description">Guests get 5 free ratings. Registered users can unlock 10 more ratings for $1 through PayPal.</p>
+          
+          <div class="hero-buttons">
+            <button class="btn-primary" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Vote Now</button>
+            <a href="#contact" class="btn-secondary">Business Contact</a>
           </div>
 
-          <div class="panel-box premium-access">
-            <h3>Unlock Premium</h3>
-            <p class="donate-text">Donate $1 for 5 more ratings</p>
-            <a 
-              class="btn-paypal" 
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Donate $1 with PayPal
-            </a>
-            <p class="small-text">Each $1 = 5 ratings</p>
+          <!-- RATING ACCESS CARDS -->
+          <div class="rating-access">
+            <div class="access-card">
+              <div class="card-number">5</div>
+              <div class="card-label">Free votes</div>
+              <div class="card-status">Guest access</div>
+            </div>
+
+            <div class="access-card premium">
+              <div class="card-number">$1</div>
+              <div class="card-label">Premium</div>
+              <div class="card-number-sub">10<br><span class="small">Extra ratings</span></div>
+            </div>
+
+            <div class="access-card live">
+              <div class="card-label">Rating access</div>
+              <div class="status-live">● Live</div>
+            </div>
           </div>
         </div>
       </section>
@@ -82,11 +81,36 @@
         <div id="assetGrid" class="asset-grid"></div>
       </section>
 
+      <!-- VOTING PANEL (MIDDLE) -->
+      <section class="voting-panel-section">
+        <div class="voting-panel">
+          <h2>Rating Access</h2>
+
+          <div class="panel-box guest-box">
+            <h3>Guest access</h3>
+            <p class="votes-left"><span id="guestRemaining">5</span> free ratings left</p>
+          </div>
+
+          <div class="panel-box registered-box">
+            <h3>Registered users</h3>
+            <p class="unlock-text">Unlock 10 more ratings for $1</p>
+            <a 
+              class="btn-paypal" 
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pay $1 with PayPal
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- CONTACT SECTION -->
       <section class="contact-section" id="contact">
         <div class="contact-container">
           <div class="contact-info">
-            <h2>Get in Touch</h2>
+            <h2>Business Contact</h2>
             <p><strong>ALFOXI Rating Company</strong></p>
             <p>Kraichgaustr 2<br>76661 Philippsburg<br>Germany</p>
             <p>Email: kusanhearath@yahoo.com</p>
@@ -112,6 +136,7 @@
               <textarea name="message" rows="4" required></textarea>
             </div>
             <button type="submit" class="btn-primary">Send Message</button>
+            <p class="form-success"></p>
           </form>
         </div>
       </section>
