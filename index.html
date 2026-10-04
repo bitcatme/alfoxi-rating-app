@@ -3,212 +3,146 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ALFOXI Crypto Rating</title>
-    <meta name="description" content="ALFOXI Crypto Rating - vote on tokens and wallets, guest free ratings, premium paid ratings for registered users." />
+    <title>ALFOXI - Crypto Rating Platform</title>
+    <meta name="description" content="ALFOXI Crypto Rating - vote on tokens and wallets, guest free ratings, premium paid ratings." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <div class="brand-wrap">
-          <div class="brand-icon" aria-label="ALFOXI logo">
-            <div class="brand-star"></div>
-          </div>
-          <div class="brand-copy">
-            <div class="brand-name">ALFOXI</div>
-            <div class="brand-sub">Crypto Rating</div>
-            <div class="brand-tagline">Your honest experience is our glory</div>
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- LOGO -->
+        <div class="navbar-logo">
+          <div class="logo-icon"></div>
+          <span class="logo-text">ALFOXI</span>
+        </div>
+
+        <!-- CENTER NAV LINKS -->
+        <div class="navbar-links">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#tokens" class="nav-link">Tokens</a>
+          <a href="#wallets" class="nav-link">Wallets</a>
+          <a href="#news" class="nav-link">News</a>
+        </div>
+
+        <!-- RIGHT SIDE: SEARCH -->
+        <div class="navbar-search">
+          <input 
+            id="navSearchInput" 
+            type="search" 
+            class="search-input" 
+            placeholder="Search tokens, wallets..."
+          />
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="app-container">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-text">
+          <h1>Crypto Rating Platform</h1>
+          <p>Vote on the best crypto tokens and wallets. Guests get 5 free ratings.</p>
+          <div class="hero-cta">
+            <button class="btn-primary">Start Voting</button>
           </div>
         </div>
 
-        <nav class="nav" aria-label="Main navigation">
-          <button class="nav-btn active">Home</button>
-          <button class="nav-btn">Tokens</button>
-          <button class="nav-btn">Wallets</button>
-          <button class="nav-btn">Leaderboard</button>
-        </nav>
+        <!-- VOTING ACCESS PANEL (RIGHT) -->
+        <div class="voting-panel">
+          <div class="panel-box guest-access">
+            <h3>Guest Access</h3>
+            <p class="vote-count"><span id="guestRemaining">5</span> free votes left</p>
+            <p class="small-text">No registration needed</p>
+          </div>
 
-        <div class="header-actions">
-          <button class="header-btn search">Search</button>
-          <button class="header-btn">Contact</button>
-          <button class="header-btn">Info</button>
+          <div class="panel-box premium-access">
+            <h3>Unlock Premium</h3>
+            <p class="donate-text">Donate $1 for 5 more ratings</p>
+            <a 
+              class="btn-paypal" 
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Donate $1 with PayPal
+            </a>
+            <p class="small-text">Each $1 = 5 ratings</p>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main class="main-content">
-        <section class="hero">
-          <div class="hero-copy">
-            <span class="eyebrow">ALFOXI Rating</span>
-            <h1>Vote on the best crypto tokens and wallets.</h1>
-            <p>
-              Guests get 5 free ratings. Registered users can unlock 10 more ratings for $1 through PayPal.
-            </p>
+      <!-- RATING GRID -->
+      <section class="ratings-section">
+        <h2>Top Rated Assets</h2>
+        <div id="assetGrid" class="asset-grid"></div>
+      </section>
 
-            <div class="cta-row">
-              <a class="primary-btn" href="#rating-panel">Vote Now</a>
-              <a class="secondary-btn" href="#contact">Business Contact</a>
-            </div>
-
-            <div class="stats">
-              <div>
-                <strong id="guestStat">5</strong>
-                <span>Free votes</span>
-              </div>
-              <div>
-                <strong>$1</strong>
-                <span>Premium</span>
-              </div>
-              <div>
-                <strong>10</strong>
-                <span>Extra ratings</span>
-              </div>
-            </div>
+      <!-- CONTACT SECTION -->
+      <section class="contact-section" id="contact">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p><strong>ALFOXI Rating Company</strong></p>
+            <p>Kraichgaustr 2<br>76661 Philippsburg<br>Germany</p>
+            <p>Email: kusanhearath@yahoo.com</p>
           </div>
 
-          <aside class="rating-panel" id="rating-panel">
-            <div class="panel-header">
-              <span>Rating access</span>
-              <span class="status-badge">Live</span>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" required />
             </div>
-
-            <div class="access-box guest-box">
-              <h3>Guest access</h3>
-              <p><strong id="guestRemaining">5</strong> free ratings left</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" name="company" />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required />
+              </div>
             </div>
-
-            <div class="access-box premium-box">
-              <h3>Registered users</h3>
-              <p>Unlock 10 more ratings for <strong>$1</strong></p>
-              <a
-                class="paypal-btn"
-                href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Rating%20Access&amount=1.00&currency_code=USD&return=https://alfoxi-rating-app.vercel.app/&cancel_return=https://alfoxi-rating-app.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Pay $1 with PayPal
-              </a>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" rows="4" required></textarea>
             </div>
-          </aside>
-        </section>
-
-        <section class="toolbar">
-          <div class="search-wrap">
-            <input id="searchInput" type="search" placeholder="Search token or wallet..." />
-          </div>
-          <div class="chip-row" aria-label="Filters">
-            <button class="chip active" data-filter="all">All</button>
-            <button class="chip" data-filter="token">Tokens</button>
-            <button class="chip" data-filter="wallet">Wallets</button>
-            <button class="chip" data-filter="top">Top rated</button>
-          </div>
-        </section>
-
-        <section class="section-head">
-          <div>
-            <span class="eyebrow small">Most voted</span>
-            <h2>Top crypto ratings</h2>
-          </div>
-          <button class="link-btn">See all</button>
-        </section>
-
-        <section id="assetGrid" class="asset-grid" aria-live="polite"></section>
-
-        <section class="contact-section" id="contact">
-          <div class="contact-header">
-            <span class="eyebrow small">Business inquiries</span>
-            <h2>Contact ALFOXI</h2>
-          </div>
-
-          <div class="contact-flex">
-            <div class="info-card card-panel">
-              <h3>Company information</h3>
-              <p>
-                <strong>ALFOXI Rating Company</strong><br />
-                Kraichgaustr 2<br />
-                76661 Philippsburg<br />
-                Germany
-              </p>
-
-              <ul>
-                <li>Business partnerships</li>
-                <li>Token and wallet submissions</li>
-                <li>Customer support</li>
-                <li>Negotiation and collaboration</li>
-              </ul>
-            </div>
-
-            <form class="contact-form card-panel" id="contactForm">
-              <div class="form-row">
-                <label>
-                  <span>Name</span>
-                  <input type="text" name="name" placeholder="Your name" required />
-                </label>
-              </div>
-
-              <div class="two-col">
-                <label>
-                  <span>Company</span>
-                  <input type="text" name="company" placeholder="Company name" />
-                </label>
-                <label>
-                  <span>Telephone</span>
-                  <input type="tel" name="telephone" placeholder="+49 ..." />
-                </label>
-              </div>
-
-              <div class="form-row">
-                <label>
-                  <span>Email address</span>
-                  <input type="email" name="email" placeholder="name@company.com" required />
-                </label>
-              </div>
-
-              <div class="form-row">
-                <label>
-                  <span>Message</span>
-                  <textarea name="message" rows="5" placeholder="Tell us about your request..." required></textarea>
-                </label>
-              </div>
-
-              <button type="submit" class="primary-btn form-submit">Send inquiry</button>
-              <p class="form-success" aria-live="polite"></p>
-            </form>
-          </div>
-        </section>
-      </main>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+      </section>
     </div>
 
+    <!-- ASSET CARD TEMPLATE -->
     <template id="assetCardTemplate">
-      <article class="asset-card">
-        <div class="card-top">
-          <div class="asset-badge">
+      <div class="asset-card">
+        <div class="card-header">
+          <div class="asset-info">
             <div class="asset-icon"></div>
-          </div>
-          <div class="asset-meta">
-            <div class="asset-type"></div>
-            <h3 class="asset-name"></h3>
+            <div>
+              <p class="asset-type"></p>
+              <h3 class="asset-name"></h3>
+            </div>
           </div>
           <div class="asset-score"></div>
         </div>
 
-        <div class="sparkline-wrap">
-          <svg class="sparkline" viewBox="0 0 160 48" preserveAspectRatio="none"></svg>
+        <div class="chart-container">
+          <svg class="mini-chart" viewBox="0 0 160 48"></svg>
         </div>
 
-        <div class="card-bottom">
-          <div class="vote-data">
-            <span>Votes</span>
-            <strong class="vote-count"></strong>
-          </div>
-          <div class="vote-actions">
-            <button class="vote-btn guest">Guest vote</button>
-            <button class="vote-btn paid">Register</button>
+        <div class="card-footer">
+          <span class="vote-info"><strong class="vote-count"></strong> votes</span>
+          <div class="vote-buttons">
+            <button class="btn-vote guest-vote">Vote (Guest)</button>
+            <button class="btn-vote premium-vote">Register</button>
           </div>
         </div>
-      </article>
+      </div>
     </template>
 
     <script src="app.js"></script>
