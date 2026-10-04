@@ -1,0 +1,12 @@
+{
+  "name": "alfoxi-rating-app",
+  "version": "1.0.0",
+  "description": "ALFOXI Crypto Token & Wallet Rating Platform",
+  "scripts": {
+    "dev": "http-server",
+    "build": "echo 'No build step needed'"
+  },
+  "keywords": ["crypto", "rating", "token", "wallet"],
+  "author": "ALFOXI",
+  "license": "MIT"
+}
