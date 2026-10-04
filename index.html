@@ -79,8 +79,15 @@
       <section class="top-rankings-section">
         <h2>Live Top Rankings</h2>
         
+        <!-- RANKING TABS -->
+        <div class="ranking-tabs">
+          <button class="tab-button active" onclick="switchTab('crypto')">Crypto Voting</button>
+          <button class="tab-button" onclick="switchTab('wallet')">Digital Wallets</button>
+          <button class="tab-button" onclick="switchTab('stocks')">Stock Ranking</button>
+        </div>
+
         <!-- CRYPTO VOTING RANKING -->
-        <div class="ranking-chart">
+        <div id="crypto" class="ranking-chart active">
           <div class="chart-header">
             <h3>Crypto Voting Ranking</h3>
             <div class="chart-stats">
@@ -98,7 +105,7 @@
         </div>
 
         <!-- DIGITAL WALLET VOTING RANKING -->
-        <div class="ranking-chart">
+        <div id="wallet" class="ranking-chart">
           <div class="chart-header">
             <h3>Digital Wallet Voting Ranking</h3>
             <div class="chart-stats">
@@ -115,20 +122,15 @@
           </div>
         </div>
 
-        <!-- MOST VOTING STOCKS RANKING -->
-        <div class="ranking-chart">
+        <!-- STOCK VOTING RANKING -->
+        <div id="stocks" class="ranking-chart">
           <div class="chart-header">
-            <h3>
-              <button class="chart-toggle" id="stocksToggle" onclick="toggleStocksRanking()">
-                Most Voting Stocks Ranking
-                <span class="toggle-icon">▼</span>
-              </button>
-            </h3>
+            <h3>Most Voting Stocks Ranking</h3>
             <div class="chart-stats">
               <span class="rank-position">Total: <strong id="stocksCount">50</strong> Assets</span>
             </div>
           </div>
-          <div id="stocksContent" class="stocks-content">
+          <div class="stocks-content open">
             <div class="stocks-table">
               <div class="table-header">
                 <div class="col-rank">Rank</div>
@@ -180,32 +182,7 @@
           <div class="contact-info">
             <h2>Business Contact</h2>
             <p><strong>ALFOXI Rating Company</strong></p>
-            <p>Kraichgaustr 2<br>76661 Philippsburg<br>Germany</p>
-            <p>Email: kusanhearath@yahoo.com</p>
           </div>
-
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="name" required />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Company</label>
-                <input type="text" name="company" />
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary">Send Message</button>
-            <p class="form-success"></p>
-          </form>
         </div>
       </section>
     </div>
