@@ -14,12 +14,10 @@
     <!-- TOP NAVIGATION BAR -->
     <nav class="navbar">
       <div class="navbar-container">
-        <!-- LOGO -->
         <div class="navbar-logo">
           <span>ALFOXI Rating</span>
         </div>
 
-        <!-- CENTER NAV LINKS -->
         <div class="navbar-links">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#tokens" class="nav-link">Tokens</a>
@@ -27,33 +25,24 @@
           <a href="#news" class="nav-link">News</a>
         </div>
 
-        <!-- RIGHT SIDE: SEARCH -->
         <div class="navbar-search">
-          <input 
-            id="navSearchInput" 
-            type="search" 
-            class="search-input" 
-            placeholder="Search tokens, wallets..."
-          />
+          <input id="navSearchInput" type="search" class="search-input" placeholder="Search tokens, wallets..." />
         </div>
       </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <div class="app-container">
-      <!-- HERO SECTION -->
       <section class="hero-section">
         <div class="hero-content">
           <h1>ALFOXI Rating</h1>
           <p class="hero-subtitle">Vote on the best crypto tokens and wallets.</p>
           <p class="hero-description">Guests get 5 free ratings. Registered users can unlock 10 more ratings for $1 through PayPal.</p>
-          
+
           <div class="hero-buttons">
             <button class="btn-primary" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Vote Now</button>
             <a href="#contact" class="btn-secondary">Business Contact</a>
           </div>
 
-          <!-- RATING ACCESS CARDS -->
           <div class="rating-access">
             <div class="access-card">
               <div class="card-number">5</div>
@@ -75,18 +64,15 @@
         </div>
       </section>
 
-      <!-- TOP RANKINGS CHARTS SECTION -->
       <section class="top-rankings-section">
         <h2>Live Top Rankings</h2>
-        
-        <!-- RANKING TABS -->
+
         <div class="ranking-tabs">
-          <button class="tab-button active" onclick="switchTab('crypto')">Crypto Voting</button>
-          <button class="tab-button" onclick="switchTab('wallet')">Digital Wallets</button>
-          <button class="tab-button" onclick="switchTab('stocks')">Stock Ranking</button>
+          <button class="tab-button active" onclick="switchTab('crypto', this)">Crypto Voting</button>
+          <button class="tab-button" onclick="switchTab('wallet', this)">Digital Wallets</button>
+          <button class="tab-button" onclick="switchTab('stocks', this)">Stock Ranking</button>
         </div>
 
-        <!-- CRYPTO VOTING RANKING -->
         <div id="crypto" class="ranking-chart active">
           <div class="chart-header">
             <h3>Crypto Voting Ranking</h3>
@@ -104,7 +90,6 @@
           </div>
         </div>
 
-        <!-- DIGITAL WALLET VOTING RANKING -->
         <div id="wallet" class="ranking-chart">
           <div class="chart-header">
             <h3>Digital Wallet Voting Ranking</h3>
@@ -120,9 +105,13 @@
             <span class="legend-item"><strong id="walletVotes">892</strong> total votes</span>
             <span class="legend-item">Top: <strong id="walletTop">MetaMask</strong></span>
           </div>
+
+          <div class="wallet-list-wrap">
+            <div id="walletList" class="wallet-list"></div>
+            <div id="walletDetail" class="wallet-detail hidden" aria-live="polite"></div>
+          </div>
         </div>
 
-        <!-- STOCK VOTING RANKING -->
         <div id="stocks" class="ranking-chart">
           <div class="chart-header">
             <h3>Most Voting Stocks Ranking</h3>
@@ -145,13 +134,11 @@
         </div>
       </section>
 
-      <!-- RATING GRID -->
       <section class="ratings-section">
         <h2>Top Rated Assets</h2>
         <div id="assetGrid" class="asset-grid"></div>
       </section>
 
-      <!-- VOTING PANEL (MIDDLE) -->
       <section class="voting-panel-section">
         <div class="voting-panel">
           <h2>Rating Access</h2>
@@ -164,19 +151,13 @@
           <div class="panel-box registered-box">
             <h3>Registered users</h3>
             <p class="unlock-text">Unlock 10 more ratings for $1</p>
-            <a 
-              class="btn-paypal" 
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="btn-paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD" target="_blank" rel="noopener noreferrer">
               Pay $1 with PayPal
             </a>
           </div>
         </div>
       </section>
 
-      <!-- CONTACT SECTION -->
       <section class="contact-section" id="contact">
         <div class="contact-container">
           <div class="contact-info">
@@ -187,7 +168,6 @@
       </section>
     </div>
 
-    <!-- ASSET CARD TEMPLATE -->
     <template id="assetCardTemplate">
       <div class="asset-card">
         <div class="card-header">
