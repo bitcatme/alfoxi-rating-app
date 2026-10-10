@@ -54,16 +54,16 @@
     const tracker = document.getElementById('cheeseTracker');
     if (tracker) tracker.innerHTML = cheeseHTML(getLimit(), remaining);
     const counter = document.getElementById('ratingsLeft');
-    if (counter) counter.textContent = remaining + (remaining === 1 ? ' free rating left' : ' free ratings left');
+    if (counter) counter.textContent = remaining + (remaining === 1 ? ' rating point left' : ' rating points left');
     const status = document.getElementById('registerStatus');
-    if (status) status.textContent = user ? 'Registered member: ' + user.name : 'Guest (register to get 5 free ratings)';
+    if (status) status.textContent = user ? 'Registered member: ' + user.name : 'Guest (register to get 5 rating points)';
     const btn = document.getElementById('registerBtn');
     if (btn) btn.style.display = user ? 'none' : '';
   }
 
   function registerUser() {
     if (getUser()) return;
-    const name = (window.prompt('Register to get 5 free ratings.\nYour name:') || '').trim();
+    const name = (window.prompt('Register to get 5 rating points.\nYour name:') || '').trim();
     if (!name) return;
     const email = (window.prompt('Your email (stored only in this browser):') || '').trim();
     if (!email || email.indexOf('@') === -1) {
@@ -71,15 +71,15 @@
       return;
     }
     write('crypratUser', { name: name, email: email });
-    message('Welcome, ' + name + '! You now have 5 free ratings in total.');
+    message('Welcome, ' + name + '! You now have 5 rating points in total.');
     updateUI();
   }
 
   function castVote(card) {
     if (getRemaining() <= 0) {
       message(getUser()
-        ? 'You have used all 5 free ratings. Thanks for rating with Cryp Rat!'
-        : 'You used your 1 free guest rating. Register to get 5 free ratings!');
+        ? 'You have used all 5 rating points. Thanks for rating with Cryp Rat!'
+        : 'You used your 1 guest rating point. Register to get 5 rating points!');
       return;
     }
     const nameEl = card.querySelector('.asset-name');
@@ -93,7 +93,7 @@
       const current = parseInt(countEl.textContent.replace(/[^0-9]/g, ''), 10) || 0;
       countEl.textContent = (current + 1).toLocaleString();
     }
-    message('Thanks for rating ' + name + '! ' + getRemaining() + ' free rating(s) left.');
+    message('Thanks for rating ' + name + '! ' + getRemaining() + ' rating point(s) left.');
     updateUI();
   }
 
@@ -113,7 +113,7 @@
       const iconEl = clone.querySelector('.asset-icon');
       const btn = clone.querySelector('.guest-vote');
       
-      if (typeEl) typeEl.textContent = 'Crypto';
+      if (typeEl) typeEl.textContent = 'Rating Points';
       if (nameEl) nameEl.textContent = asset.name;
       if (scoreEl) scoreEl.textContent = asset.score;
       if (countEl) countEl.textContent = (asset.votes + (getOverrides()[asset.name] || 0)).toLocaleString();

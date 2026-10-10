@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cryp Rat - Crypto Ratings Live</title>
-    <meta name="description" content="Cryp Rat - Crypto Ratings Live. Rate tokens and wallets. 1 free rating for guests, 5 for registered members." />
+    <meta name="description" content="Cryp Rat - Crypto Ratings Live. Rate tokens and wallets. 1 rating point for guests, 5 for registered members." />
     <link rel="icon" type="image/svg+xml" href="assets/cryprat-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,22 +83,22 @@
           <div class="hero-text">
             <h1>Cryp Rat</h1>
             <p class="hero-subtitle">Rate the best crypto tokens and wallets.</p>
-            <p class="hero-description">Guests get 1 free rating. Register to get 5 free ratings.</p>
+            <p class="hero-description">Guests get 1 rating point. Register to get 5 rating points.</p>
           </div>
 
-          <button class="btn-primary" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Rating Now</button>
+          <button class="rating-now-link" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Rating Now</button>
 
           <div class="rating-access">
             <div class="access-card">
               <div class="card-label">Guest</div>
               <div class="cheese-row" id="guestCheese"></div>
-              <div class="card-note">1 free rating</div>
+              <div class="card-note">1 rating point</div>
             </div>
 
             <div class="access-card">
               <div class="card-label">Registered member</div>
               <div class="cheese-row" id="memberCheese"></div>
-              <div class="card-note">5 free ratings</div>
+              <div class="card-note">5 rating points</div>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
             <svg id="cryptoChart" class="live-chart" viewBox="0 0 600 200"></svg>
           </div>
           <div class="chart-legend">
-            <span class="legend-item"><strong id="cryptoVotes">1,245</strong> total ratings</span>
+            <span class="legend-item"><strong id="cryptoVotes">1,245</strong> total rating points</span>
             <span class="legend-item">Top: <strong id="cryptoTop">Bitcoin</strong></span>
           </div>
         </div>
@@ -142,7 +142,7 @@
             <svg id="walletChart" class="live-chart" viewBox="0 0 600 200"></svg>
           </div>
           <div class="chart-legend">
-            <span class="legend-item"><strong id="walletVotes">892</strong> total ratings</span>
+            <span class="legend-item"><strong id="walletVotes">892</strong> total rating points</span>
             <span class="legend-item">Top: <strong id="walletTop">MetaMask</strong></span>
           </div>
 
@@ -164,8 +164,8 @@
               <div class="table-header">
                 <div class="col-rank">Rank</div>
                 <div class="col-name">Asset Name</div>
-                <div class="col-type">Type</div>
-                <div class="col-votes">Ratings</div>
+                <div class="col-type">Rating Points</div>
+                <div class="col-votes">Total</div>
                 <div class="col-change">Change</div>
               </div>
               <div id="stocksList" class="table-body"></div>
@@ -181,12 +181,12 @@
 
       <section class="voting-panel-section">
         <div class="voting-panel">
-          <h2>Your Free Ratings</h2>
+          <h2>Your Rating Points</h2>
           <div class="panel-box guest-box tracker-box">
             <div class="cheese-row" id="cheeseTracker"></div>
             <p class="votes-left" id="ratingsLeft"></p>
             <p class="register-status" id="registerStatus"></p>
-            <button type="button" class="btn-register" id="registerBtn">Register for 5 free ratings</button>
+            <button type="button" class="btn-register" id="registerBtn">Register for 5 rating points</button>
           </div>
           <p class="vote-message" id="voteMessage" aria-live="polite"></p>
         </div>
@@ -235,9 +235,9 @@
         </div>
 
         <div class="card-footer">
-          <span class="vote-info"><strong class="vote-count"></strong> ratings</span>
+          <span class="vote-info"><strong class="vote-count"></strong> rating points</span>
           <div class="vote-buttons">
-            <button class="btn-vote guest-vote">Rating Now</button>
+            <button class="btn-vote guest-vote rating-text">Rating Now</button>
           </div>
         </div>
       </div>

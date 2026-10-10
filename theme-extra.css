@@ -45,3 +45,37 @@
 }
 .btn-register:hover { background: #004499; }
 .guest-vote { white-space: nowrap; }
+
+/* Rating Now - text link style */
+.rating-now-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+.rating-now-link:hover {
+  color: #004499;
+}
+
+/* Asset card rating link */
+.guest-vote.rating-text {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #0066cc;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+.guest-vote.rating-text:hover {
+  color: #004499;
+}
