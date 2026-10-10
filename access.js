@@ -48,6 +48,26 @@
     if (el) el.textContent = text;
   }
 
+  function updateButtonStates() {
+    const remaining = getRemaining();
+    const allButtons = document.querySelectorAll('.guest-vote.rating-text');
+    allButtons.forEach(function(btn) {
+      if (remaining <= 0) {
+        btn.disabled = true;
+        btn.classList.add('disabled');
+        btn.style.opacity = '0.4';
+        btn.style.cursor = 'not-allowed';
+        btn.style.pointerEvents = 'none';
+      } else {
+        btn.disabled = false;
+        btn.classList.remove('disabled');
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        btn.style.pointerEvents = 'auto';
+      }
+    });
+  }
+
   function updateUI() {
     const user = getUser();
     const remaining = getRemaining();
@@ -59,6 +79,7 @@
     if (status) status.textContent = user ? 'Registered member: ' + user.name : 'Guest (register to get 5 rating points)';
     const btn = document.getElementById('registerBtn');
     if (btn) btn.style.display = user ? 'none' : '';
+    updateButtonStates();
   }
 
   function registerUser() {
@@ -93,7 +114,8 @@
       const current = parseInt(countEl.textContent.replace(/[^0-9]/g, ''), 10) || 0;
       countEl.textContent = (current + 1).toLocaleString();
     }
-    message('Thanks for rating ' + name + '! ' + getRemaining() + ' rating point(s) left.');
+    const pointsLeft = getRemaining() - 1;
+    message('Thanks for rating ' + name + '! ' + (pointsLeft > 0 ? pointsLeft + ' rating point(s) left.' : 'No more rating points left. Thanks for rating with Cryp Rat!'));
     updateUI();
   }
 
@@ -126,6 +148,7 @@
       if (btn) btn.addEventListener('click', function () { castVote(card); });
       grid.appendChild(clone);
     });
+    updateButtonStates();
   }
 
   function setup() {
