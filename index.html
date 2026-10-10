@@ -53,6 +53,17 @@
           <input id="navSearchInput" type="search" class="search-input" placeholder="Search tokens, wallets..." />
         </div>
       </div>
+
+      <div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" hidden>
+        <div class="modal-box">
+          <button type="button" class="modal-close" id="registerClose" aria-label="Close registration form">&times;</button>
+          <h2 id="registerTitle">Register for free ratings</h2>
+          <p class="registration-note">Registration is saved in this browser only; it does not create an online account.</p>
+          <form id="registerForm" class="contact-form">
+            <button type="submit" class="btn-primary">Get 5 free ratings</button>
+          </form>
+        </div>
+      </div>
     </nav>
 
     <div class="app-container">
@@ -85,7 +96,7 @@
           <p class="hero-tagline">Hi there, I'm 'Cryp Rat', your honest crypto rating. I can change the boost of any digital crypto market booster. Please check each rating and click your honest rating below.</p>
           <h1>Cryp Rat</h1>
           <p class="hero-subtitle">Vote on the best crypto tokens and wallets.</p>
-          <p class="hero-description">Guests get 5 free ratings. Registered users can unlock 10 more ratings for $1 through PayPal.</p>
+          <p class="hero-description">Guests get 1 free rating. Registered users get 5 free ratings. Your ratings are saved in this browser.</p>
 
           <div class="hero-buttons">
             <button class="btn-primary" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Vote Now</button>
@@ -93,15 +104,15 @@
 
           <div class="rating-access">
             <div class="access-card">
-              <div class="card-number">5</div>
-              <div class="card-label">Free votes</div>
+              <div class="card-number">1</div>
+              <div class="card-label">Free rating</div>
               <div class="card-status">Guest access</div>
             </div>
 
             <div class="access-card premium">
-              <div class="card-number">$1</div>
-              <div class="card-label">Premium</div>
-              <div class="card-number-sub">10<br><span class="small">Extra ratings</span></div>
+              <div class="card-number">5</div>
+              <div class="card-label">Free ratings</div>
+              <div class="card-status">Registered users</div>
             </div>
 
             <div class="access-card live">
@@ -193,16 +204,23 @@
 
           <div class="panel-box guest-box">
             <h3>Guest access</h3>
-            <p class="votes-left"><span id="guestRemaining">5</span> free ratings left</p>
+            <p class="votes-left"><span id="guestRemaining">1</span> free rating left</p>
           </div>
 
           <div class="panel-box registered-box">
             <h3>Registered users</h3>
-            <p class="unlock-text">Unlock 10 more ratings for $1</p>
-            <a class="btn-paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=Cryp%20Rat%20Premium%20Ratings&amount=1.00&currency_code=USD" target="_blank" rel="noopener noreferrer">
-              Pay $1 with PayPal
+            <p class="unlock-text"><span id="registeredRemaining">5</span> free ratings left</p>
+            <button type="button" class="btn-primary register-open" id="registerOpen">Register for 5 free ratings</button>
+          </div>
+
+          <div class="panel-box donation-box">
+            <h3>Support Cryp Rat</h3>
+            <p class="unlock-text">Donations help keep the ratings running.</p>
+            <a class="btn-donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=kusanhearath@yahoo.com&amp;item_name=Feed%20me%20cheese&amp;currency_code=USD" target="_blank" rel="noopener noreferrer">
+              Feed me cheese 🧀
             </a>
           </div>
+          <p class="rating-message" id="ratingMessage" role="status" aria-live="polite"></p>
         </div>
       </section>
 

@@ -5,24 +5,25 @@ A modern crypto token and wallet rating platform where users can vote on their f
 ## Features
 
 ✅ **Guest Voting (Free)**
-- 5 free ratings per guest
+- 1 free rating per guest
 - No registration required
-- Votes saved in browser storage
+- Ratings saved in browser storage
 
-✅ **Premium Voting (Scalable Donation Model)**
-- $1 = 5 more ratings
-- Donate multiple times for more votes
-- PayPal integration: kusanhearath@yahoo.com
+✅ **Registered Voting**
+- 5 free ratings for registered users
+- Registration and ratings saved in the current browser only
 
 ✅ **Rating System**
-- Real-time vote counting
+- Vote counting
 - Live trending charts
 - Token and wallet ratings
 - Search and filter capabilities
 
+✅ **Donations**
+- "Feed me cheese" PayPal donation button
+
 ✅ **Contact**
 - Professional inquiry form
-- Company address: Kraichgaustr 2, 76661 Philippsburg, Germany
 - Support for partnerships and listings
 
 ## Technology Stack
@@ -45,11 +46,6 @@ Visit the live app: https://alfoxi-rating-app.vercel.app
 ## Contact
 
 **Cryp Rat**
-Kraichgaustr 2
-76661 Philippsburg
-Germany
-
-Email: kusanhearath@yahoo.com
 
 ## License
 
