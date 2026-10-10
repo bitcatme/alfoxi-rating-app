@@ -1,5 +1,78 @@
 const cryptoSeries = [112, 119, 116, 126, 121, 131, 139, 146, 154, 165, 178, 186, 193, 202, 214, 226];
 const walletSeries = [88, 92, 91, 98, 104, 110, 118, 124, 120, 127, 134, 141, 138, 151, 160, 172];
+const ratingStateKey = 'crypRatRatingState';
+
+function loadRatingState() {
+  const defaults = { guestRemaining: 1, registered: false, registeredRemaining: 5, voteCounts: {} };
+  try {
+    const saved = JSON.parse(localStorage.getItem(ratingStateKey));
+    if (!saved || typeof saved !== 'object') return defaults;
+    return {
+      guestRemaining: Number.isInteger(saved.guestRemaining) ? Math.max(0, Math.min(1, saved.guestRemaining)) : 1,
+      registered: saved.registered === true,
+      registeredRemaining: Number.isInteger(saved.registeredRemaining) ? Math.max(0, Math.min(5, saved.registeredRemaining)) : 5,
+      voteCounts: saved.voteCounts && typeof saved.voteCounts === 'object'
+        ? Object.fromEntries(Object.entries(saved.voteCounts).filter(([, count]) => Number.isInteger(count) && count >= 0))
+        : {}
+    };
+  } catch {
+    return defaults;
+  }
+}
+
+let ratingState = loadRatingState();
+
+function saveRatingState() {
+  try {
+    localStorage.setItem(ratingStateKey, JSON.stringify(ratingState));
+  } catch {
+    // Keep this page usable when browser storage is unavailable.
+  }
+}
+
+function updateRatingAccess() {
+  const guestRemaining = document.getElementById('guestRemaining');
+  const registeredRemaining = document.getElementById('registeredRemaining');
+  const registerOpen = document.getElementById('registerOpen');
+  if (guestRemaining) guestRemaining.textContent = ratingState.guestRemaining;
+  if (registeredRemaining) registeredRemaining.textContent = ratingState.registeredRemaining;
+  if (registerOpen) registerOpen.hidden = ratingState.registered;
+
+  document.querySelectorAll('.guest-vote').forEach(button => {
+    button.disabled = ratingState.registered || ratingState.guestRemaining === 0;
+  });
+  document.querySelectorAll('.premium-vote').forEach(button => {
+    button.textContent = ratingState.registered ? 'Vote (Registered)' : 'Register';
+    button.disabled = ratingState.registered && ratingState.registeredRemaining === 0;
+  });
+}
+
+function castRating(asset, type, voteCount) {
+  const message = document.getElementById('ratingMessage');
+  if (type === 'guest') {
+    if (ratingState.guestRemaining === 0) {
+      if (message) message.textContent = 'Your guest rating has been used. Register for 5 free ratings.';
+      return;
+    }
+    ratingState.guestRemaining -= 1;
+  } else {
+    if (!ratingState.registered) return;
+    if (ratingState.registeredRemaining === 0) {
+      if (message) message.textContent = 'You have used all 5 registered ratings.';
+      return;
+    }
+    ratingState.registeredRemaining -= 1;
+  }
+
+  asset.votes += 1;
+  ratingState.voteCounts[asset.name] = asset.votes;
+  voteCount.textContent = asset.votes.toLocaleString();
+  if (message) message.textContent = type === 'guest'
+    ? 'Your guest rating was counted.'
+    : 'Your registered rating was counted.';
+  saveRatingState();
+  updateRatingAccess();
+}
 
 function createCandlesFromSeries(values, offset = 0) {
   return values.map((value, index) => {
@@ -153,15 +226,28 @@ function renderAssetGrid() {
   grid.innerHTML = '';
 
   assets.forEach(asset => {
+    if (Number.isInteger(ratingState.voteCounts[asset.name])) {
+      asset.votes = ratingState.voteCounts[asset.name];
+    }
     const card = template.content.firstElementChild.cloneNode(true);
     card.querySelector('.asset-type').textContent = asset.type;
     card.querySelector('.asset-name').textContent = asset.name;
     card.querySelector('.asset-score').textContent = asset.score;
-    card.querySelector('.vote-count').textContent = asset.votes.toLocaleString();
+    const voteCount = card.querySelector('.vote-count');
+    voteCount.textContent = asset.votes.toLocaleString();
     const svg = card.querySelector('.mini-chart');
     drawMiniTrend(svg, asset.trend);
+    card.querySelector('.guest-vote').addEventListener('click', () => castRating(asset, 'guest', voteCount));
+    card.querySelector('.premium-vote').addEventListener('click', () => {
+      if (ratingState.registered) {
+        castRating(asset, 'registered', voteCount);
+      } else {
+        openRegistration();
+      }
+    });
     grid.appendChild(card);
   });
+  updateRatingAccess();
 }
 
 function renderTopCharts() {
@@ -296,10 +382,50 @@ function attachContactForm() {
   });
 }
 
+function openRegistration() {
+  const modal = document.getElementById('registerModal');
+  if (modal) modal.hidden = false;
+}
+
+function attachRegistration() {
+  const modal = document.getElementById('registerModal');
+  const form = document.getElementById('registerForm');
+  const openBtn = document.getElementById('registerOpen');
+  const closeBtn = document.getElementById('registerClose');
+  const closeModal = () => {
+    if (modal) modal.hidden = true;
+    if (openBtn) openBtn.focus();
+  };
+  if (openBtn) openBtn.addEventListener('click', openRegistration);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
+  }
+  if (form) {
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      ratingState.registered = true;
+      ratingState.registeredRemaining = 5;
+      saveRatingState();
+      updateRatingAccess();
+      const message = document.getElementById('ratingMessage');
+      if (message) message.textContent = 'Registration saved in this browser. Your 5 free ratings are ready.';
+      closeModal();
+    });
+  }
+}
+
 function init() {
   renderAssetGrid();
   renderTopCharts();
   attachContactForm();
+  attachRegistration();
+  updateRatingAccess();
 }
 
 window.addEventListener('DOMContentLoaded', init);
