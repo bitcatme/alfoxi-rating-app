@@ -5,14 +5,13 @@ A modern crypto token and wallet rating platform where users can vote on their f
 ## Features
 
 ✅ **Guest Voting (Free)**
-- 5 free ratings per guest
+- 1 free rating per guest
 - No registration required
 - Votes saved in browser storage
 
-✅ **Premium Voting (Scalable Donation Model)**
-- $1 = 5 more ratings
-- Donate multiple times for more votes
-- PayPal integration: kusanhearath@yahoo.com
+✅ **Registered Voting**
+- 5 free ratings per registered user
+- "Feed me cheese" PayPal donation button: kusanherath@yahoo.com
 
 ✅ **Rating System**
 - Real-time vote counting
@@ -49,7 +48,7 @@ Kraichgaustr 2
 76661 Philippsburg
 Germany
 
-Email: kusanhearath@yahoo.com
+Email: kusanherath@yahoo.com
 
 ## License
 

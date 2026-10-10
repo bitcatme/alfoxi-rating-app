@@ -157,11 +157,108 @@ function renderAssetGrid() {
     card.querySelector('.asset-type').textContent = asset.type;
     card.querySelector('.asset-name').textContent = asset.name;
     card.querySelector('.asset-score').textContent = asset.score;
-    card.querySelector('.vote-count').textContent = asset.votes.toLocaleString();
+    card.querySelector('.vote-count').textContent = (asset.votes + (getVoteOverrides()[asset.name] || 0)).toLocaleString();
+    card.querySelector('.guest-vote').addEventListener('click', () => castVote(asset, card));
+    card.querySelector('.premium-vote').addEventListener('click', () => registerUser());
     const svg = card.querySelector('.mini-chart');
     drawMiniTrend(svg, asset.trend);
     grid.appendChild(card);
   });
+}
+
+const GUEST_LIMIT = 1;
+const REGISTERED_LIMIT = 5;
+
+function readStore(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch (e) {
+    return fallback;
+  }
+}
+
+function writeStore(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {}
+}
+
+function getUser() {
+  const user = readStore('crypratUser', null);
+  return user && user.name ? user : null;
+}
+
+function getRatingLimit() {
+  return getUser() ? REGISTERED_LIMIT : GUEST_LIMIT;
+}
+
+function getRatingsUsed() {
+  const used = Number(readStore('crypratRatingsUsed', 0));
+  return Number.isFinite(used) && used > 0 ? used : 0;
+}
+
+function getRemaining() {
+  return Math.max(0, getRatingLimit() - getRatingsUsed());
+}
+
+function getVoteOverrides() {
+  return readStore('crypratVotes', {});
+}
+
+function showVoteMessage(text) {
+  const el = document.getElementById('voteMessage');
+  if (el) el.textContent = text;
+}
+
+function updateAccessUI() {
+  const user = getUser();
+  const remaining = getRemaining();
+  const counter = document.getElementById('guestRemaining');
+  if (counter) counter.textContent = remaining;
+  const label = document.getElementById('remainingLabel');
+  if (label) label.textContent = remaining === 1 ? 'rating' : 'ratings';
+  const status = document.getElementById('registerStatus');
+  if (status) status.textContent = user ? 'Registered: ' + user.name : 'Not registered';
+  const btn = document.getElementById('registerBtn');
+  if (btn) btn.style.display = user ? 'none' : '';
+  document.querySelectorAll('.premium-vote').forEach(b => {
+    b.textContent = user ? 'Registered' : 'Register';
+    b.disabled = !!user;
+  });
+  document.querySelectorAll('.guest-vote').forEach(b => {
+    b.textContent = user ? 'Vote' : 'Vote (Guest)';
+  });
+}
+
+function castVote(asset, card) {
+  if (getRemaining() <= 0) {
+    showVoteMessage(getUser()
+      ? 'You have used all 5 free ratings. Thanks for rating with Cryp Rat!'
+      : 'You have used your 1 free guest rating. Register to get 5 free ratings!');
+    return;
+  }
+  writeStore('crypratRatingsUsed', getRatingsUsed() + 1);
+  const overrides = getVoteOverrides();
+  overrides[asset.name] = (overrides[asset.name] || 0) + 1;
+  writeStore('crypratVotes', overrides);
+  card.querySelector('.vote-count').textContent = (asset.votes + overrides[asset.name]).toLocaleString();
+  showVoteMessage('Thanks for rating ' + asset.name + '! ' + getRemaining() + ' free rating(s) left.');
+  updateAccessUI();
+}
+
+function registerUser() {
+  if (getUser()) return;
+  const name = (window.prompt('Register to get 5 free ratings.\nYour name:') || '').trim();
+  if (!name) return;
+  const email = (window.prompt('Your email (stored only in this browser):') || '').trim();
+  if (!email || !email.includes('@')) {
+    showVoteMessage('Please enter a valid email to register.');
+    return;
+  }
+  writeStore('crypratUser', { name, email });
+  showVoteMessage('Welcome, ' + name + '! You now have 5 free ratings in total.');
+  updateAccessUI();
 }
 
 function renderTopCharts() {
@@ -281,6 +378,9 @@ function init() {
   renderAssetGrid();
   renderTopCharts();
   attachContactForm();
+  const registerBtn = document.getElementById('registerBtn');
+  if (registerBtn) registerBtn.addEventListener('click', registerUser);
+  updateAccessUI();
 }
 
 window.addEventListener('DOMContentLoaded', init);
