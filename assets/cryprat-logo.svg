@@ -1,0 +1,24 @@
+<svg viewBox="0 0 240 200" role="img" aria-label="Cryp Rat logo" xmlns="http://www.w3.org/2000/svg">
+  <title>Cryp Rat logo</title>
+  <path class="rat-tail" d="M52 140 C14 140 8 100 28 88 C40 80 44 92 34 100" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <path class="rat-tail-stripes" d="M20 112 l9 -3 M18 100 l9 -2 M26 90 l8 1" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="105" cy="130" rx="42" ry="30" fill="#111"/>
+  <circle cx="68" cy="52" r="20" fill="#111"/><circle cx="68" cy="52" r="11" fill="#fff"/>
+  <circle cx="128" cy="52" r="20" fill="#111"/><circle cx="128" cy="52" r="11" fill="#fff"/>
+  <path d="M98 40 C130 40 142 70 150 92 C152 98 146 102 140 102 L96 102 C70 102 58 88 58 72 C58 54 76 40 98 40 Z" fill="#111"/>
+  <circle cx="152" cy="94" r="6" fill="#fff" stroke="#111" stroke-width="2"/>
+  <rect x="104" y="100" width="12" height="16" rx="2" fill="#fff" stroke="#111" stroke-width="2"/>
+  <rect x="118" y="100" width="12" height="16" rx="2" fill="#fff" stroke="#111" stroke-width="2"/>
+  <g class="rat-eyes">
+    <rect class="rat-lens" x="70" y="62" width="30" height="20" rx="6" fill="#000" stroke="#fff" stroke-width="2.5"/>
+    <rect class="rat-lens" x="108" y="62" width="30" height="20" rx="6" fill="#000" stroke="#fff" stroke-width="2.5"/>
+    <path d="M100 70 h8" stroke="#fff" stroke-width="2.5"/>
+    <path class="rat-glint" d="M76 66 l8 0 M114 66 l8 0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <circle cx="178" cy="124" r="24" fill="#fff" stroke="#111" stroke-width="5"/>
+  <circle cx="178" cy="124" r="17" fill="none" stroke="#111" stroke-width="2"/>
+  <text x="178" y="131" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="22" fill="#111">$</text>
+  <path d="M148 135 C158 140 164 138 168 132" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <path d="M84 150 v22 M118 150 v22" stroke="#111" stroke-width="9" stroke-linecap="round"/>
+  <text x="120" y="194" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="26" fill="#111">CrypRat</text>
+</svg>
