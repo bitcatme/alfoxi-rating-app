@@ -3,6 +3,22 @@
   const MEMBER_LIMIT = 5;
   const CHEESE = '<svg class="cheese-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M2 17 L22 9 V17 Z" fill="#f7c331" stroke="#a87a00" stroke-width="1"/><path d="M2 17 L22 9 L22 6 L2 13 Z" fill="#fbd95c" stroke="#a87a00" stroke-width="1"/><circle cx="9" cy="15" r="1.2" fill="#a87a00"/><circle cx="15" cy="13.5" r="1" fill="#a87a00"/><circle cx="18.5" cy="15.5" r="0.8" fill="#a87a00"/></svg>';
 
+  // Crypto data with real icons
+  const CRYPTO_DATA = [
+    { name: 'Bitcoin', symbol: 'BTC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/btc.png', score: 95, votes: 8450 },
+    { name: 'Ethereum', symbol: 'ETH', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/eth.png', score: 92, votes: 7230 },
+    { name: 'Tether', symbol: 'USDT', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/usdt.png', score: 78, votes: 5120 },
+    { name: 'BNB', symbol: 'BNB', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/bnb.png', score: 88, votes: 6890 },
+    { name: 'XRP', symbol: 'XRP', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/xrp.png', score: 85, votes: 6120 },
+    { name: 'USDC', symbol: 'USDC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/usdc.png', score: 82, votes: 5780 },
+    { name: 'Solana', symbol: 'SOL', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/sol.png', score: 89, votes: 7100 },
+    { name: 'TRON', symbol: 'TRX', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/trx.png', score: 81, votes: 5450 },
+    { name: 'Zcash', symbol: 'ZEC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/zec.png', score: 76, votes: 4890 },
+    { name: 'Hyperliquid', symbol: 'HYPE', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/hype.png', score: 84, votes: 5670 },
+    { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/doge.png', score: 80, votes: 5340 },
+    { name: 'Monero', symbol: 'XMR', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/xmr.png', score: 79, votes: 5010 },
+  ];
+
   function read(key, fallback) {
     try {
       const raw = localStorage.getItem(key);
@@ -81,27 +97,45 @@
     updateUI();
   }
 
-  function setup() {
-    document.querySelectorAll('.asset-card').forEach(function (card) {
-      const nameEl = card.querySelector('.asset-name');
-      const countEl = card.querySelector('.vote-count');
-      const extra = nameEl ? getOverrides()[nameEl.textContent] : 0;
-      if (extra && countEl) {
-        const current = parseInt(countEl.textContent.replace(/[^0-9]/g, ''), 10) || 0;
-        countEl.textContent = (current + extra).toLocaleString();
+  function renderAssets() {
+    const grid = document.getElementById('assetGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const template = document.getElementById('assetCardTemplate');
+    if (!template) return;
+    CRYPTO_DATA.forEach(function (asset) {
+      const clone = template.content.cloneNode(true);
+      const card = clone.querySelector('.asset-card');
+      const typeEl = clone.querySelector('.asset-type');
+      const nameEl = clone.querySelector('.asset-name');
+      const scoreEl = clone.querySelector('.asset-score');
+      const countEl = clone.querySelector('.vote-count');
+      const iconEl = clone.querySelector('.asset-icon');
+      const btn = clone.querySelector('.guest-vote');
+      
+      if (typeEl) typeEl.textContent = 'Crypto';
+      if (nameEl) nameEl.textContent = asset.name;
+      if (scoreEl) scoreEl.textContent = asset.score;
+      if (countEl) countEl.textContent = (asset.votes + (getOverrides()[asset.name] || 0)).toLocaleString();
+      if (iconEl) {
+        iconEl.style.backgroundImage = 'url(' + asset.icon + ')';
+        iconEl.style.backgroundSize = 'contain';
+        iconEl.style.backgroundPosition = 'center';
+        iconEl.style.backgroundRepeat = 'no-repeat';
       }
-      const btn = card.querySelector('.guest-vote');
       if (btn) btn.addEventListener('click', function () { castVote(card); });
+      grid.appendChild(clone);
     });
+  }
 
+  function setup() {
+    renderAssets();
     const reg = document.getElementById('registerBtn');
     if (reg) reg.addEventListener('click', registerUser);
-
     const guestCheese = document.getElementById('guestCheese');
     if (guestCheese) guestCheese.innerHTML = cheeseHTML(GUEST_LIMIT, GUEST_LIMIT);
     const memberCheese = document.getElementById('memberCheese');
     if (memberCheese) memberCheese.innerHTML = cheeseHTML(MEMBER_LIMIT, MEMBER_LIMIT);
-
     updateUI();
   }
 
