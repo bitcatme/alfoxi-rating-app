@@ -836,3 +836,11 @@ button {
     height: 100px;
   }
 }
+
+/* Feed me cheese donation */
+.cheese-box { margin-top: 12px; }
+.btn-cheese { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; font-size: 12px; font-weight: 600; color: #7a5a00; background: #fff8e1; border: 1px solid #f0d27a; border-radius: 999px; text-decoration: none; }
+.btn-cheese:hover { background: #fff1c2; }
+.cheese-note { margin: 6px 0 0; font-size: 11px; color: #6b7280; }
+.vote-message { margin: 10px 0 0; font-size: 12px; color: #0a5cff; min-height: 1em; }
+.register-status { font-size: 12px; color: #6b7280; margin: 4px 0 8px; }

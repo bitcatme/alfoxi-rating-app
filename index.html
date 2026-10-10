@@ -36,7 +36,7 @@
         <div class="hero-content">
           <h1>ALFOXI Rating</h1>
           <p class="hero-subtitle">Vote on the best crypto tokens and wallets.</p>
-          <p class="hero-description">Guests get 5 free ratings. Registered users can unlock 10 more ratings for $1 through PayPal.</p>
+          <p class="hero-description">Guests get 1 free rating. Register to get 5 free ratings.</p>
 
           <div class="hero-buttons">
             <button class="btn-primary" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Vote Now</button>
@@ -45,15 +45,15 @@
 
           <div class="rating-access">
             <div class="access-card">
-              <div class="card-number">5</div>
-              <div class="card-label">Free votes</div>
+              <div class="card-number">1</div>
+              <div class="card-label">Free rating</div>
               <div class="card-status">Guest access</div>
             </div>
 
             <div class="access-card premium">
-              <div class="card-number">$1</div>
-              <div class="card-label">Premium</div>
-              <div class="card-number-sub">10<br><span class="small">Extra ratings</span></div>
+              <div class="card-number">5</div>
+              <div class="card-label">Registered</div>
+              <div class="card-status">Free ratings</div>
             </div>
 
             <div class="access-card live">
@@ -145,15 +145,26 @@
 
           <div class="panel-box guest-box">
             <h3>Guest access</h3>
-            <p class="votes-left"><span id="guestRemaining">5</span> free ratings left</p>
+            <p class="votes-left"><span id="guestRemaining">1</span> free <span id="remainingLabel">rating</span> left</p>
           </div>
 
           <div class="panel-box registered-box">
             <h3>Registered users</h3>
-            <p class="unlock-text">Unlock 10 more ratings for $1</p>
-            <a class="btn-paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=kusanhearath@yahoo.com&item_name=ALFOXI%20Premium%20Ratings&amount=1.00&currency_code=USD" target="_blank" rel="noopener noreferrer">
-              Pay $1 with PayPal
+            <p class="unlock-text">Registered users get 5 free ratings</p>
+            <p class="register-status" id="registerStatus">Not registered</p>
+            <button type="button" class="btn-vote" id="registerBtn">Register</button>
+            
+          </div>
+
+          <p class="vote-message" id="voteMessage" aria-live="polite"></p>
+
+          <div class="cheese-box">
+            <a class="btn-cheese" href="https://www.paypal.com/donate/?business=kusanherath%40yahoo.com&amp;no_recurring=0&amp;item_name=Feed+Cryp+Rat+some+cheese&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Feed me cheese - donate with PayPal">
+              <svg class="cheese-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M2 17 L22 9 V17 Z" fill="#f7c331" stroke="#c9961a" stroke-width="1"/><path d="M2 17 L22 9 L22 6 L2 13 Z" fill="#fbd95c" stroke="#c9961a" stroke-width="1"/><circle cx="9" cy="15" r="1.2" fill="#c9961a"/><circle cx="15" cy="13.5" r="1" fill="#c9961a"/><circle cx="18.5" cy="15.5" r="0.8" fill="#c9961a"/></svg>
+              <span>Feed me cheese</span>
+              <svg class="paypal-logo" viewBox="0 0 64 16" width="48" height="12" aria-label="PayPal" role="img"><text x="0" y="13" font-family="Arial, sans-serif" font-size="14" font-weight="800" font-style="italic" fill="#003087">Pay</text><text x="24" y="13" font-family="Arial, sans-serif" font-size="14" font-weight="800" font-style="italic" fill="#009cde">Pal</text></svg>
             </a>
+            <p class="cheese-note">Any contribution or donation helps Cryp Rat stay fed 🧀</p>
           </div>
         </div>
       </section>
@@ -162,7 +173,13 @@
         <div class="contact-container">
           <div class="contact-info">
             <h2>Business Contact</h2>
-            <p><strong>ALFOXI Rating Company</strong></p>
+            <p><strong>Cryp Rat</strong></p>
+            <a class="btn-cheese small" href="https://www.paypal.com/donate/?business=kusanherath%40yahoo.com&amp;no_recurring=0&amp;item_name=Feed+Cryp+Rat+some+cheese&amp;currency_code=USD" target="_blank" rel="noopener noreferrer" aria-label="Feed me cheese - donate with PayPal">
+              <svg class="cheese-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M2 17 L22 9 V17 Z" fill="#f7c331" stroke="#c9961a" stroke-width="1"/><path d="M2 17 L22 9 L22 6 L2 13 Z" fill="#fbd95c" stroke="#c9961a" stroke-width="1"/><circle cx="9" cy="15" r="1.2" fill="#c9961a"/><circle cx="15" cy="13.5" r="1" fill="#c9961a"/><circle cx="18.5" cy="15.5" r="0.8" fill="#c9961a"/></svg>
+              <span>Feed me cheese</span>
+              <svg class="paypal-logo" viewBox="0 0 64 16" width="48" height="12" aria-label="PayPal" role="img"><text x="0" y="13" font-family="Arial, sans-serif" font-size="14" font-weight="800" font-style="italic" fill="#003087">Pay</text><text x="24" y="13" font-family="Arial, sans-serif" font-size="14" font-weight="800" font-style="italic" fill="#009cde">Pal</text></svg>
+            </a>
+            <p class="cheese-note">Any contribution or donation helps Cryp Rat stay fed 🧀</p>
           </div>
         </div>
       </section>
