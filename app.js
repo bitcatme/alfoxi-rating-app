@@ -252,7 +252,7 @@ function renderTopCharts() {
   }
 }
 
-function switchTab(tabName) {
+function switchTab(tabName, btn) {
   const tabs = document.querySelectorAll('.ranking-chart');
   const buttons = document.querySelectorAll('.tab-button');
   
@@ -260,12 +260,31 @@ function switchTab(tabName) {
   buttons.forEach(btn => btn.classList.remove('active'));
   
   document.getElementById(tabName).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 function attachContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
+
+  const modal = document.getElementById('contactModal');
+  const openBtn = document.getElementById('contactOpen');
+  const closeBtn = document.getElementById('contactClose');
+  const closeModal = () => {
+    if (!modal) return;
+    modal.hidden = true;
+    if (openBtn) openBtn.focus();
+  };
+  if (modal && openBtn) {
+    openBtn.addEventListener('click', () => {
+      modal.hidden = false;
+      const first = form.querySelector('input');
+      if (first) first.focus();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+  }
 
   form.addEventListener('submit', event => {
     event.preventDefault();
