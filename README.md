@@ -1,4 +1,4 @@
-# ALFOXI Crypto Rating Platform
+# Cryp Rat - Crypto Ratings Live
 
 A modern crypto token and wallet rating platform where users can vote on their favorite digital assets.
 
@@ -20,7 +20,7 @@ A modern crypto token and wallet rating platform where users can vote on their f
 - Token and wallet ratings
 - Search and filter capabilities
 
-✅ **Business Contact**
+✅ **Contact**
 - Professional inquiry form
 - Company address: Kraichgaustr 2, 76661 Philippsburg, Germany
 - Support for partnerships and listings
@@ -44,7 +44,7 @@ Visit the live app: https://alfoxi-rating-app.vercel.app
 
 ## Contact
 
-**ALFOXI Rating Company**
+**Cryp Rat**
 Kraichgaustr 2
 76661 Philippsburg
 Germany
