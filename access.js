@@ -2,22 +2,22 @@
   const GUEST_LIMIT = 1;
   const MEMBER_LIMIT = 5;
   const CHEESE = '<svg class="cheese-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M2 17 L22 9 V17 Z" fill="#f7c331" stroke="#a87a00" stroke-width="1"/><path d="M2 17 L22 9 L22 6 L2 13 Z" fill="#fbd95c" stroke="#a87a00" stroke-width="1"/><circle cx="9" cy="15" r="1.2" fill="#a87a00"/><circle cx="15" cy="13.5" r="1" fill="#a87a00"/><circle cx="18.5" cy="15.5" r="0.8" fill="#a87a00"/></svg>';
+  const ICON = 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/';
 
-  // Crypto data with real icons
   const CRYPTO_DATA = [
-    { name: 'Bitcoin', symbol: 'BTC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/btc.png', score: 95, votes: 8450 },
-    { name: 'Ethereum', symbol: 'ETH', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/eth.png', score: 92, votes: 7230 },
-    { name: 'Tether', symbol: 'USDT', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/usdt.png', score: 78, votes: 5120 },
-    { name: 'BNB', symbol: 'BNB', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/bnb.png', score: 88, votes: 6890 },
-    { name: 'XRP', symbol: 'XRP', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/xrp.png', score: 85, votes: 6120 },
-    { name: 'USDC', symbol: 'USDC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/usdc.png', score: 82, votes: 5780 },
-    { name: 'Solana', symbol: 'SOL', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/sol.png', score: 89, votes: 7100 },
-    { name: 'TRON', symbol: 'TRX', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/trx.png', score: 81, votes: 5450 },
-    { name: 'Zcash', symbol: 'ZEC', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/zec.png', score: 76, votes: 4890 },
-    { name: 'Hyperliquid', symbol: 'HYPE', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/hype.png', score: 84, votes: 5670 },
-    { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/doge.png', score: 80, votes: 5340 },
-    { name: 'Monero', symbol: 'XMR', icon: 'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/xmr.png', score: 79, votes: 5010 },
-  ];
+    { name: 'Bitcoin', symbol: 'BTC', score: 95, votes: 8450 },
+    { name: 'Ethereum', symbol: 'ETH', score: 92, votes: 7230 },
+    { name: 'Tether', symbol: 'USDT', score: 78, votes: 5120 },
+    { name: 'BNB', symbol: 'BNB', score: 88, votes: 6890 },
+    { name: 'XRP', symbol: 'XRP', score: 85, votes: 6120 },
+    { name: 'USDC', symbol: 'USDC', score: 82, votes: 5780 },
+    { name: 'Solana', symbol: 'SOL', score: 89, votes: 7100 },
+    { name: 'TRON', symbol: 'TRX', score: 81, votes: 5450 },
+    { name: 'Zcash', symbol: 'ZEC', score: 76, votes: 4890 },
+    { name: 'Hyperliquid', symbol: 'HYPE', score: 84, votes: 5670 },
+    { name: 'Dogecoin', symbol: 'DOGE', score: 80, votes: 5340 },
+    { name: 'Monero', symbol: 'XMR', score: 79, votes: 5010 }
+  ].map(function (c) { c.icon = ICON + c.symbol.toLowerCase() + '.png'; return c; });
 
   function read(key, fallback) {
     try {
@@ -48,23 +48,75 @@
     if (el) el.textContent = text;
   }
 
+  /* ---------- LIVE GRAPHS ---------- */
+  const MAX_POINTS = 24;
+  const liveCards = {};   // name -> { svg, trend, timer, badge }
+  let mainTimer = null;
+
+  function baseTrend(score) {
+    const t = [];
+    let v = Math.max(20, score - 40);
+    for (let i = 0; i < 8; i++) {
+      v += (score - v) * 0.25 + (Math.random() * 4 - 1.5);
+      t.push(v);
+    }
+    return t;
+  }
+
+  function drawCard(state, color) {
+    if (typeof drawMiniTrend === 'function') drawMiniTrend(state.svg, state.trend, color);
+  }
+
+  function startCardLive(name) {
+    const state = liveCards[name];
+    if (!state || state.timer) return;
+    if (state.badge) state.badge.style.display = 'inline-block';
+    state.timer = setInterval(function () {
+      const last = state.trend[state.trend.length - 1];
+      // always drifts upward with a little noise
+      state.trend.push(last + 0.6 + Math.random() * 2.2 - 0.4);
+      if (state.trend.length > MAX_POINTS) state.trend.shift();
+      drawCard(state, '#1ea97b');
+    }, 900);
+  }
+
+  function bumpMainChart() {
+    if (typeof cryptoSeries === 'undefined' || typeof drawMixedCandleChart !== 'function') return;
+    const svg = document.getElementById('cryptoChart');
+    if (!svg) return;
+    const tick = function () {
+      const last = cryptoSeries[cryptoSeries.length - 1];
+      cryptoSeries.push(last + 2 + Math.random() * 6 - 1);
+      if (cryptoSeries.length > MAX_POINTS) cryptoSeries.shift();
+      drawMixedCandleChart(svg, createCandlesFromSeries(cryptoSeries, 4), {
+        lineColor: '#1ea97b', upColor: '#1ea97b', downColor: '#ff5c6a', gridColor: '#b0d4f1'
+      });
+      const first = cryptoSeries[0];
+      const pct = ((cryptoSeries[cryptoSeries.length - 1] - first) / first) * 100;
+      const pctEl = document.getElementById('cryptoPercent');
+      if (pctEl) pctEl.textContent = '+' + pct.toFixed(1) + '%';
+    };
+    tick();
+    if (!mainTimer) mainTimer = setInterval(tick, 1200);
+  }
+
+  function activateLive(name) {
+    startCardLive(name);
+    bumpMainChart();
+    const top = document.getElementById('cryptoTop');
+    if (top) top.textContent = name;
+  }
+
+  /* ---------- ACCESS / LIMITS ---------- */
   function updateButtonStates() {
     const remaining = getRemaining();
-    const allButtons = document.querySelectorAll('.guest-vote.rating-text');
-    allButtons.forEach(function(btn) {
-      if (remaining <= 0) {
-        btn.disabled = true;
-        btn.classList.add('disabled');
-        btn.style.opacity = '0.4';
-        btn.style.cursor = 'not-allowed';
-        btn.style.pointerEvents = 'none';
-      } else {
-        btn.disabled = false;
-        btn.classList.remove('disabled');
-        btn.style.opacity = '1';
-        btn.style.cursor = 'pointer';
-        btn.style.pointerEvents = 'auto';
-      }
+    document.querySelectorAll('.guest-vote.rating-text').forEach(function (btn) {
+      const off = remaining <= 0;
+      btn.disabled = off;
+      btn.classList.toggle('disabled', off);
+      btn.style.opacity = off ? '0.4' : '1';
+      btn.style.cursor = off ? 'not-allowed' : 'pointer';
+      btn.style.pointerEvents = off ? 'none' : 'auto';
     });
   }
 
@@ -114,39 +166,53 @@
       const current = parseInt(countEl.textContent.replace(/[^0-9]/g, ''), 10) || 0;
       countEl.textContent = (current + 1).toLocaleString();
     }
-    const pointsLeft = getRemaining() - 1;
-    message('Thanks for rating ' + name + '! ' + (pointsLeft > 0 ? pointsLeft + ' rating point(s) left.' : 'No more rating points left. Thanks for rating with Cryp Rat!'));
+    const left = getRemaining();
+    message('Thanks for rating ' + name + '! ' + (left > 0 ? left + ' rating point(s) left.' : 'No more rating points left.'));
+    activateLive(name);
     updateUI();
   }
 
   function renderAssets() {
     const grid = document.getElementById('assetGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
     const template = document.getElementById('assetCardTemplate');
-    if (!template) return;
+    if (!grid || !template) return;
+    grid.innerHTML = '';
+    const overrides = getOverrides();
+
     CRYPTO_DATA.forEach(function (asset) {
       const clone = template.content.cloneNode(true);
       const card = clone.querySelector('.asset-card');
-      const typeEl = clone.querySelector('.asset-type');
-      const nameEl = clone.querySelector('.asset-name');
-      const scoreEl = clone.querySelector('.asset-score');
-      const countEl = clone.querySelector('.vote-count');
+      clone.querySelector('.asset-type').textContent = 'Rating Points';
+      clone.querySelector('.asset-name').textContent = asset.name;
+      clone.querySelector('.asset-score').textContent = asset.score;
+      clone.querySelector('.vote-count').textContent = (asset.votes + (overrides[asset.name] || 0)).toLocaleString();
+
       const iconEl = clone.querySelector('.asset-icon');
+      iconEl.style.backgroundImage = 'url(' + asset.icon + ')';
+      iconEl.style.backgroundSize = 'contain';
+      iconEl.style.backgroundPosition = 'center';
+      iconEl.style.backgroundRepeat = 'no-repeat';
+      iconEl.style.backgroundColor = 'transparent';
+      iconEl.style.boxShadow = 'none';
+
+      const svg = clone.querySelector('.mini-chart');
+      const badge = document.createElement('span');
+      badge.textContent = '\u25CF LIVE';
+      badge.style.cssText = 'display:none;margin-left:6px;font-size:9px;font-weight:800;color:#1ea97b;';
+      clone.querySelector('.asset-type').appendChild(badge);
+
+      const state = { svg: svg, trend: baseTrend(asset.score), timer: null, badge: badge };
+      liveCards[asset.name] = state;
+      drawCard(state, '#0066cc');
+
       const btn = clone.querySelector('.guest-vote');
-      
-      if (typeEl) typeEl.textContent = 'Rating Points';
-      if (nameEl) nameEl.textContent = asset.name;
-      if (scoreEl) scoreEl.textContent = asset.score;
-      if (countEl) countEl.textContent = (asset.votes + (getOverrides()[asset.name] || 0)).toLocaleString();
-      if (iconEl) {
-        iconEl.style.backgroundImage = 'url(' + asset.icon + ')';
-        iconEl.style.backgroundSize = 'contain';
-        iconEl.style.backgroundPosition = 'center';
-        iconEl.style.backgroundRepeat = 'no-repeat';
-      }
       if (btn) btn.addEventListener('click', function () { castVote(card); });
       grid.appendChild(clone);
+    });
+
+    // resume live graphs for coins already rated in this browser
+    Object.keys(overrides).forEach(function (name) {
+      if (liveCards[name]) activateLive(name);
     });
     updateButtonStates();
   }
