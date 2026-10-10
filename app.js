@@ -13,7 +13,7 @@ function createCandlesFromSeries(values, offset = 0) {
 }
 
 function drawMixedCandleChart(svg, values, options = {}) {
-  const { upColor = '#1ea97b', downColor = '#ff5c6a', lineColor = '#0a5cff', gridColor = '#e8edf5' } = options;
+  const { upColor = '#1ea97b', downColor = '#ff5c6a', lineColor = '#ffd400', gridColor = '#4d4100' } = options;
 
   svg.innerHTML = '';
   const width = 600;
@@ -36,7 +36,7 @@ function drawMixedCandleChart(svg, values, options = {}) {
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', width - 45);
     text.setAttribute('y', line.y + 4);
-    text.setAttribute('fill', '#7b8ca0');
+    text.setAttribute('fill', '#d9c75a');
     text.setAttribute('font-size', '10');
     text.setAttribute('text-anchor', 'end');
     text.textContent = Math.round(line.value);
@@ -101,11 +101,11 @@ function drawMixedCandleChart(svg, values, options = {}) {
   axis.setAttribute('x2', width - padding.right);
   axis.setAttribute('y1', height - padding.bottom);
   axis.setAttribute('y2', height - padding.bottom);
-  axis.setAttribute('stroke', '#ccd7e5');
+  axis.setAttribute('stroke', '#4d4100');
   svg.appendChild(axis);
 }
 
-function drawMiniTrend(svg, values, color = '#0a5cff') {
+function drawMiniTrend(svg, values, color = '#ffd400') {
   svg.innerHTML = '';
   const width = 160;
   const height = 48;
@@ -169,13 +169,13 @@ function renderTopCharts() {
   const walletCandles = createCandlesFromSeries(walletSeries, 2);
 
   drawMixedCandleChart(document.getElementById('cryptoChart'), cryptoCandles, {
-    lineColor: '#0a5cff',
+    lineColor: '#ffd400',
     upColor: '#1ea97b',
     downColor: '#ff5c6a'
   });
 
   drawMixedCandleChart(document.getElementById('walletChart'), walletCandles, {
-    lineColor: '#8a63ff',
+    lineColor: '#fff3b0',
     upColor: '#1ea97b',
     downColor: '#ff5c6a'
   });
