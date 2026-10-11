@@ -50,7 +50,7 @@
 
   /* ---------- LIVE GRAPHS ---------- */
   const MAX_POINTS = 24;
-  const liveCards = {};   // name -> { svg, trend, timer, badge }
+  const liveCards = {};
   let mainTimer = null;
 
   function baseTrend(score) {
@@ -73,7 +73,6 @@
     if (state.badge) state.badge.style.display = 'inline-block';
     state.timer = setInterval(function () {
       const last = state.trend[state.trend.length - 1];
-      // always drifts upward with a little noise
       state.trend.push(last + 0.6 + Math.random() * 2.2 - 0.4);
       if (state.trend.length > MAX_POINTS) state.trend.shift();
       drawCard(state, '#1ea97b');
@@ -162,6 +161,13 @@
     const overrides = getOverrides();
     overrides[name] = (overrides[name] || 0) + 1;
     write('crypratVotes', overrides);
+
+    // keep a history so the profile page can analyse this member's ratings
+    const asset = CRYPTO_DATA.find(function (c) { return c.name === name; });
+    const history = read('crypratHistory', []);
+    history.push({ name: name, symbol: asset ? asset.symbol : '', score: asset ? asset.score : 0, ts: Date.now() });
+    write('crypratHistory', history);
+
     if (countEl) {
       const current = parseInt(countEl.textContent.replace(/[^0-9]/g, ''), 10) || 0;
       countEl.textContent = (current + 1).toLocaleString();
@@ -210,14 +216,25 @@
       grid.appendChild(clone);
     });
 
-    // resume live graphs for coins already rated in this browser
     Object.keys(overrides).forEach(function (name) {
       if (liveCards[name]) activateLive(name);
     });
     updateButtonStates();
   }
 
+  function addProfileLink() {
+    const search = document.querySelector('.navbar-search');
+    if (!search || document.getElementById('profileLink')) return;
+    const a = document.createElement('a');
+    a.id = 'profileLink';
+    a.href = 'profile.html';
+    a.className = 'nav-link';
+    a.textContent = 'My Profile';
+    search.parentNode.insertBefore(a, search);
+  }
+
   function setup() {
+    addProfileLink();
     renderAssets();
     const reg = document.getElementById('registerBtn');
     if (reg) reg.addEventListener('click', registerUser);
