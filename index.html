@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="theme-extra.css" />
     <link rel="stylesheet" href="hero-compact.css" />
+    <link rel="stylesheet" href="auth-buttons.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -49,8 +50,7 @@
     </nav>
 
     <div class="info-bar">
-      <p class="info-heading">Rating for your evaluation on how much you like your crypto standing live</p>
-      <p class="info-text">Hi there, I'm 'Cryp Rat', your honest crypto rating. I can change the boost of any digital crypto market booster. Please check each rating and click your honest rating below.</p>
+      <p class="info-text">Hi there, I'm <strong>'Cryp Rat'</strong>, make your honest crypto rating. Digital crypto market booster. Please check on each rating and click your honest rating below.</p>
     </div>
 
     <div class="app-container">
@@ -84,6 +84,11 @@
             <h1>Cryp Rat</h1>
             <p class="hero-subtitle">Rate the best crypto tokens and wallets.</p>
             <p class="hero-description">Guests get 1 rating point. Register to get 5 rating points.</p>
+          </div>
+
+          <div class="hero-actions">
+            <button type="button" class="auth-btn auth-register" id="heroRegisterBtn">Register (5 rating points)</button>
+            <button type="button" class="auth-btn auth-guest" id="heroGuestBtn">Continue as Guest (1 rating point)</button>
           </div>
 
           <button class="rating-now-link" onclick="document.getElementById('assetGrid').scrollIntoView({ behavior: 'smooth' })">Rating Now</button>
@@ -246,5 +251,6 @@
     <script src="app.js"></script>
     <script src="access.js"></script>
     <script src="timeframes.js"></script>
+    <script src="auth-buttons.js"></script>
   </body>
 </html>
