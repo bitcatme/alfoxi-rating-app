@@ -40,3 +40,62 @@
   opacity: 0.4;
   text-decoration: line-through;
 }
+
+/* ===== Cryp Rat logo animation ===== */
+/* 1) Token coin in his hand floats up and down all the time */
+.logo-svg circle[cx="178"] {
+  animation: coin-float 2s ease-in-out infinite alternate;
+}
+@keyframes coin-float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-7px); }
+}
+
+/* 2) Every 20 seconds the rat walks a little and comes back */
+.logo-hero  { --walk: 16px; }
+.logo-small { --walk: 5px; }
+.logo-svg {
+  animation: rat-walk 20s ease-in-out infinite;
+}
+@keyframes rat-walk {
+  0%, 68%  { translate: 0 0; }
+  78%      { translate: var(--walk) 0; }
+  84%      { translate: var(--walk) 0; }
+  94%, 100% { translate: 0 0; }
+}
+
+/* 3) Legs step while he is walking (there and back) */
+.logo-svg path[d^="M84 150"] {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: rat-legs 20s linear infinite;
+}
+@keyframes rat-legs {
+  0%, 68% { transform: scaleY(1); }
+  69% { transform: scaleY(0.72); }
+  70% { transform: scaleY(1); }
+  71% { transform: scaleY(0.72); }
+  72% { transform: scaleY(1); }
+  73% { transform: scaleY(0.72); }
+  74% { transform: scaleY(1); }
+  75% { transform: scaleY(0.72); }
+  76% { transform: scaleY(1); }
+  77% { transform: scaleY(0.72); }
+  78%, 84% { transform: scaleY(1); }
+  85% { transform: scaleY(0.72); }
+  86% { transform: scaleY(1); }
+  87% { transform: scaleY(0.72); }
+  88% { transform: scaleY(1); }
+  89% { transform: scaleY(0.72); }
+  90% { transform: scaleY(1); }
+  91% { transform: scaleY(0.72); }
+  92% { transform: scaleY(1); }
+  93% { transform: scaleY(0.72); }
+  94%, 100% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-svg,
+  .logo-svg circle[cx="178"],
+  .logo-svg path[d^="M84 150"] { animation: none; }
+}
