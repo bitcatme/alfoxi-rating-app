@@ -34,8 +34,76 @@
   transition: background 0.2s ease, transform 0.15s ease;
 }
 .auth-btn:hover { transform: translateY(-1px); }
-.auth-register { background: #0066cc; color: #fff; }
-.auth-register:hover { background: #004499; }
-.auth-guest { background: #fff; color: #000; border: 1px solid #0066cc; }
-.auth-guest:hover { background: #cce5ff; }
 .auth-hint { margin: 4px 0 0; font-size: 11.5px; color: #333; }
+
+/* ===== White website background + light gray buttons ===== */
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel-soft: #ffffff;
+  --line: #dcdcdc;
+  --primary-soft: #e5e5e5;
+}
+html, body { background: #ffffff !important; }
+body .navbar { background: #ffffff; }
+body .hero-content,
+body .access-card,
+body .guest-box,
+body .voting-panel,
+body .panel-box,
+body .ranking-chart,
+body .asset-card,
+body .contact-section,
+body .modal-box { background: #ffffff; }
+body .chart-container-live,
+body .chart-container,
+body .card-header,
+body .vote-message { background: #ffffff; }
+body .asset-score { background: #ececec; }
+
+/* every click button = light gray */
+body .auth-btn,
+body .auth-register,
+body .auth-guest,
+body .btn-register,
+body .btn-primary,
+body .btn-secondary,
+body .btn-vote,
+body .tab-button,
+body .tf-btn,
+body .contact-link,
+body .modal-close,
+body .cv-close {
+  background: #e5e5e5 !important;
+  color: #000000 !important;
+  border: 1px solid #cfcfcf !important;
+  box-shadow: none !important;
+}
+body .auth-btn:hover,
+body .auth-register:hover,
+body .auth-guest:hover,
+body .btn-register:hover,
+body .btn-primary:hover,
+body .btn-secondary:hover,
+body .btn-vote:hover,
+body .tab-button:hover,
+body .tf-btn:hover,
+body .contact-link:hover,
+body .modal-close:hover,
+body .cv-close:hover {
+  background: #d4d4d4 !important;
+  color: #000000 !important;
+}
+/* selected tab / time range stays light gray, just a bit darker and bold */
+body .tab-button.active,
+body .tf-btn.active {
+  background: #c9c9c9 !important;
+  color: #000000 !important;
+  font-weight: 800;
+  animation: none;
+}
+/* time-range bar frame */
+body .tf-bar { background: #f5f5f5; border-color: #cfcfcf; }
+body .tf-btn { border-right: 1px solid #cfcfcf !important; border-top: 0 !important; border-bottom: 0 !important; border-left: 0 !important; }
+/* disabled rating button stays clearly off */
+body .btn-vote:disabled { background: #f0f0f0 !important; color: #999 !important; }
