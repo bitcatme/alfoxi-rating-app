@@ -1,7 +1,7 @@
 :root {
   --bg: #f4f8fc;
-  --panel: rgba(255, 255, 255, 0.9);
-  --panel-soft: rgba(241, 248, 253, 0.94);
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-soft: rgba(241, 248, 253, 0.85);
   --primary: #0066cc;
   --primary-dark: #004499;
   --primary-soft: #cce5ff;
@@ -26,7 +26,7 @@ body {
   margin: 0;
   background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(244, 248, 252, 0.9), rgba(244, 248, 252, 0.9)),
+    linear-gradient(rgba(236, 245, 252, 0.45), rgba(236, 245, 252, 0.45)),
     url("assets/line-pattern.jpeg");
   background-size: auto, 465px 659px;
   background-repeat: repeat, repeat;
