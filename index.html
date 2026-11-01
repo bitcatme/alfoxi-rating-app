@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="theme-extra.css" />
     <link rel="stylesheet" href="hero-compact.css" />
     <link rel="stylesheet" href="auth-buttons.css" />
+    <link rel="stylesheet" href="ai-tools.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -184,6 +185,23 @@
         <div id="assetGrid" class="asset-grid"></div>
       </section>
 
+      <section class="ai-section" id="aiTools">
+        <div class="ai-panel">
+          <h2>Ask Cryp Rat AI</h2>
+          <p class="ai-note">AI explains the community ratings. It is not financial advice.</p>
+          <div class="ai-chips">
+            <button type="button" class="ai-chip">Which asset is rated highest and why?</button>
+            <button type="button" class="ai-chip">Compare tokens and wallets</button>
+            <button type="button" class="ai-chip">Which asset is trending up fastest?</button>
+          </div>
+          <form class="ai-form" id="aiForm">
+            <input id="aiQuestion" type="text" maxlength="500" placeholder="Ask about any rating..." autocomplete="off" />
+            <button type="submit">Ask</button>
+          </form>
+          <p class="ai-answer" id="aiAnswer" aria-live="polite"></p>
+        </div>
+      </section>
+
       <section class="voting-panel-section">
         <div class="voting-panel">
           <h2>Your Rating Points</h2>
@@ -252,5 +270,6 @@
     <script src="access.js"></script>
     <script src="timeframes.js"></script>
     <script src="auth-buttons.js"></script>
+    <script src="ai-tools.js"></script>
   </body>
 </html>

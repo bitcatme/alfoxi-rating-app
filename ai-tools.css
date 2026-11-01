@@ -1,0 +1,38 @@
+.ai-section { margin-bottom: 24px; }
+.ai-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.ai-panel h2 { margin: 0 0 4px; font-size: 16px; }
+.ai-note { margin: 0 0 10px; font-size: 11.5px; color: var(--muted); }
+.ai-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ai-chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+}
+.ai-chip:hover { background: var(--primary-soft); }
+.ai-form { display: flex; gap: 8px; }
+.ai-form input {
+  flex: 1;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: #fff;
+}
+.ai-form button {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 16px;
+  background: var(--primary-soft);
+  font-weight: 700;
+}
+.ai-form button:disabled { opacity: 0.5; cursor: wait; }
+.ai-answer { margin: 10px 0 0; font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+.ai-answer.error { color: #b3261e; }
