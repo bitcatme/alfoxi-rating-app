@@ -1,13 +1,13 @@
 :root {
-  --bg: #d4e8f7;
-  --panel: #e8f4fb;
-  --panel-soft: #f0f8ff;
+  --bg: #f4f8fc;
+  --panel: rgba(255, 255, 255, 0.9);
+  --panel-soft: rgba(241, 248, 253, 0.94);
   --primary: #0066cc;
   --primary-dark: #004499;
   --primary-soft: #cce5ff;
   --text: #000000;
   --muted: #333333;
-  --line: #b0d4f1;
+  --line: #d3e2ec;
   --success: #1ea97b;
   --gold: #0066cc;
   --gold-soft: #cce5ff;
@@ -24,7 +24,14 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(244, 248, 252, 0.9), rgba(244, 248, 252, 0.9)),
+    url("assets/line-pattern.jpeg");
+  background-size: auto, 465px 659px;
+  background-repeat: repeat, repeat;
+  background-position: center, center top;
+  background-attachment: scroll, fixed;
   color: var(--text);
   font-family: "Inter", sans-serif;
   font-size: 14px;
