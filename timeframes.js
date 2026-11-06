@@ -23,7 +23,7 @@
       '.asset-card .tf-btn{font-size:8.5px;padding:2px 5px}' +
       '.chart-container,.chart-container-live{cursor:zoom-in}' +
       '.cv-back{position:fixed;inset:0;background:rgba(0,40,80,.45);z-index:9999;display:flex;align-items:center;justify-content:center;padding:14px}' +
-      '.cv-box{background:#fff;border:1px solid #9cc7ea;border-radius:14px;width:min(820px,100%);max-height:96vh;overflow:auto;padding:14px 16px;color:#000;font-family:Inter,Arial,sans-serif}' +
+      '.cv-box{background:#fff;border:1px solid #9cc7ea;border-radius:14px;width:min(820px,100%);max-height:96vh;overflow:auto;padding:14px 16px;color:#000;font-family:"Stardos Stencil",serif}' +
       '.cv-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}' +
       '.cv-head h3{margin:0;font-size:16px}' +
       '.cv-close{border:0;background:#cce5ff;border-radius:8px;font-size:18px;line-height:1;padding:4px 10px;cursor:pointer}' +
