@@ -222,19 +222,7 @@
     updateButtonStates();
   }
 
-  function addProfileLink() {
-    const search = document.querySelector('.navbar-search');
-    if (!search || document.getElementById('profileLink')) return;
-    const a = document.createElement('a');
-    a.id = 'profileLink';
-    a.href = 'profile.html';
-    a.className = 'nav-link';
-    a.textContent = 'My Profile';
-    search.parentNode.insertBefore(a, search);
-  }
-
   function setup() {
-    addProfileLink();
     renderAssets();
     const reg = document.getElementById('registerBtn');
     if (reg) reg.addEventListener('click', registerUser);
