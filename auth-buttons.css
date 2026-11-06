@@ -107,3 +107,16 @@ body .tf-bar { background: #f5f5f5; border-color: #cfcfcf; }
 body .tf-btn { border-right: 1px solid #cfcfcf !important; border-top: 0 !important; border-bottom: 0 !important; border-left: 0 !important; }
 /* disabled rating button stays clearly off */
 body .btn-vote:disabled { background: #f0f0f0 !important; color: #999 !important; }
+
+
+/* Light gray header and info banner */
+body .navbar,
+body .info-bar {
+  background: #eeeeee !important;
+}
+body .info-bar {
+  border-bottom: 1px solid #d5d5d5;
+}
+body .info-bar .info-text {
+  color: #111111;
+}
