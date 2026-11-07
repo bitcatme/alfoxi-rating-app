@@ -346,8 +346,8 @@ body .hero-compact .hero-brand-bar {
   min-width: 260px;
   gap: 14px;
   padding: 8px 14px;
-  background: #353535;
-  border: 1px solid #585858;
+  background: #d9edff;
+  border: 1px solid #b7d9f4;
   border-radius: 12px;
 }
 body .hero-compact .hero-brand-bar .logo-hero {
@@ -358,7 +358,7 @@ body .hero-compact .hero-brand-bar .logo-hero {
 body .hero-compact .hero-brand-bar h1,
 body .hero-compact .hero-brand-bar .hero-subtitle,
 body .hero-compact .hero-brand-bar .hero-description {
-  color: #ffe66d !important;
+  color: #111111 !important;
 }
 @media (max-width: 720px) {
   body .hero-compact .hero-brand-bar {
