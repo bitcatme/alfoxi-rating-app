@@ -405,3 +405,83 @@ body .contact-section * {
 body .hero-compact .hero-brand-bar .logo-hero {
   background: #f3f3f3 !important;
 }
+
+/* Dark blue page surround, charcoal content panels, and light blue controls. */
+html,
+body,
+body .app-container {
+  background: #0a1e36 !important;
+}
+body .hero-compact .hero-brand-bar,
+body .rating-access .access-card,
+body .top-rankings-section,
+body .top-rankings-section .ranking-chart,
+body .top-rankings-section .chart-container-live,
+body .top-rankings-section .ranking-tabs .tab-button,
+body .top-rankings-section .tf-bar,
+body .ratings-section,
+body .asset-card,
+body .asset-card .chart-container,
+body .asset-card .card-header,
+body .asset-card .card-footer,
+body .voting-panel,
+body .voting-panel .panel-box,
+body .voting-panel .vote-message,
+body .contact-section {
+  background: #353535 !important;
+  border-color: #585858 !important;
+}
+body .top-rankings-section .chart-container-live,
+body .asset-card .chart-container {
+  background: #292929 !important;
+}
+body .hero-compact .hero-brand-bar h1,
+body .hero-compact .hero-brand-bar .hero-subtitle,
+body .hero-compact .hero-brand-bar .hero-description,
+body .top-rankings-section *,
+body .ratings-section *,
+body .asset-card *,
+body .voting-panel *,
+body .contact-section * {
+  color: #ffe66d !important;
+}
+body .auth-btn,
+body .btn-register,
+body .btn-primary,
+body .btn-secondary,
+body .btn-vote,
+body .tab-button,
+body .tf-btn,
+body .contact-link,
+body .modal-close,
+body .cv-close,
+body button {
+  background: #9bd5ff !important;
+  color: #102b4d !important;
+  border-color: #6bb8f2 !important;
+}
+body .auth-btn:hover,
+body .btn-register:hover,
+body .btn-primary:hover,
+body .btn-secondary:hover,
+body .btn-vote:hover:not(:disabled),
+body .tab-button:hover,
+body .tf-btn:hover,
+body .contact-link:hover,
+body .modal-close:hover,
+body .cv-close:hover,
+body button:hover:not(:disabled) {
+  background: #78c5f7 !important;
+  color: #102b4d !important;
+}
+body .tab-button.active,
+body .tf-btn.active {
+  background: #78c5f7 !important;
+  color: #102b4d !important;
+}
+body .btn-vote:disabled,
+body button:disabled {
+  background: #555555 !important;
+  color: #b8ad6b !important;
+  border-color: #666666 !important;
+}
