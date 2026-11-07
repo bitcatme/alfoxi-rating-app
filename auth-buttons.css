@@ -312,3 +312,24 @@ body input::placeholder,
 body textarea::placeholder {
   color: #d3c36a !important;
 }
+
+/* Keep the brand/search header and welcome banner light gray. */
+body .navbar,
+body .info-bar {
+  background: #dedede !important;
+  border-color: #c8c8c8 !important;
+}
+body .navbar,
+body .navbar *,
+body .info-bar .info-text,
+body .info-bar .info-text strong {
+  color: #111111 !important;
+}
+body .navbar .search-input {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #bdbdbd !important;
+}
+body .navbar .search-input::placeholder {
+  color: #555555 !important;
+}
