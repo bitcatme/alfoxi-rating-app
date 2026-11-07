@@ -123,3 +123,48 @@ body .info-bar .info-text {
 body .hero-compact .hero-content {
   background: #eeeeee !important;
 }
+
+/* Light blue ranking dashboard */
+body .top-rankings-section {
+  background: #e7f4ff;
+  border: 1px solid #c5e2f8;
+  border-radius: 14px;
+  padding: 14px;
+}
+body .top-rankings-section h2,
+body .top-rankings-section .chart-header h3,
+body .top-rankings-section .rank-position,
+body .top-rankings-section .rank-change,
+body .top-rankings-section .legend-item,
+body .top-rankings-section .legend-item strong {
+  color: #111111;
+}
+body .top-rankings-section .ranking-chart {
+  background: #d9edff !important;
+  border-color: #b7d9f4;
+}
+body .top-rankings-section .chart-container-live {
+  background: #eff8ff !important;
+  border-color: #c5e2f8;
+}
+body .top-rankings-section .ranking-tabs .tab-button,
+body .top-rankings-section .tf-bar {
+  background: #d9edff !important;
+  border-color: #b7d9f4;
+}
+body .top-rankings-section .ranking-tabs .tab-button.active,
+body .top-rankings-section .tf-btn.active {
+  background: #a9d8ff !important;
+  color: #111111 !important;
+}
+body .top-rankings-section .tf-btn {
+  color: #111111 !important;
+}
+body .top-rankings-section .tf-btn:hover,
+body .top-rankings-section .ranking-tabs .tab-button:hover {
+  background: #c5e5ff !important;
+  color: #111111 !important;
+}
+body .top-rankings-section .chart-legend {
+  border-color: #b7d9f4;
+}
