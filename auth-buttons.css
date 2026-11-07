@@ -503,12 +503,13 @@ body .voting-panel,
 body .voting-panel .panel-box,
 body .voting-panel .vote-message,
 body .contact-section {
-  background: #e6e6e6 !important;
-  border-color: #c8c8c8 !important;
+  background: linear-gradient(145deg, #1d1d1d 0%, #080808 55%, #242424 100%) !important;
+  border-color: #3b3b3b !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.35) !important;
 }
 body .top-rankings-section .chart-container-live,
 body .asset-card .chart-container {
-  background: #f2f2f2 !important;
+  background: linear-gradient(145deg, #111111, #050505) !important;
 }
 body .hero-compact .hero-brand-bar *,
 body .top-rankings-section *,
@@ -516,7 +517,7 @@ body .ratings-section *,
 body .asset-card *,
 body .voting-panel *,
 body .contact-section * {
-  color: #222222 !important;
+  color: #ffffff !important;
 }
 body .hero-compact .hero-brand-bar .logo-hero {
   background: #f3f3f3 !important;
