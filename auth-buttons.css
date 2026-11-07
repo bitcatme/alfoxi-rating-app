@@ -168,3 +168,147 @@ body .top-rankings-section .ranking-tabs .tab-button:hover {
 body .top-rankings-section .chart-legend {
   border-color: #b7d9f4;
 }
+
+/* Charcoal background, yellow text, and blue interactive controls */
+:root {
+  --bg: #292929;
+  --panel: #353535;
+  --panel-soft: #3d3d3d;
+  --text: #ffe66d;
+  --muted: #f0d95e;
+  --line: #585858;
+  --primary: #1769d2;
+  --primary-dark: #0f55ad;
+  --primary-soft: #244b76;
+}
+html,
+body {
+  background: #292929 !important;
+  color: #ffe66d !important;
+}
+body :is(h1, h2, h3, h4, p, span, label, li, th, td, strong, small) {
+  color: #ffe66d !important;
+}
+body .navbar,
+body .info-bar,
+body .hero-content,
+body .access-card,
+body .guest-box,
+body .voting-panel,
+body .panel-box,
+body .ranking-chart,
+body .asset-card,
+body .contact-section,
+body .modal-box,
+body .chart-container-live,
+body .chart-container,
+body .card-header,
+body .vote-message,
+body .top-rankings-section,
+body .stocks-table,
+body .stocks-content,
+body .wallet-detail,
+body .wallet-list-wrap {
+  background: #353535 !important;
+  border-color: #585858 !important;
+}
+body .asset-score,
+body .tf-bar {
+  background: #3d3d3d !important;
+  border-color: #585858 !important;
+}
+body .info-bar .info-text,
+body .hero-content *,
+body .top-rankings-section *,
+body .ranking-chart *,
+body .asset-card *,
+body .access-card *,
+body .contact-section *,
+body .modal-box *,
+body .stocks-table *,
+body .wallet-detail *,
+body .wallet-list-wrap * {
+  color: #ffe66d !important;
+}
+body .chart-container-live {
+  background: #303030 !important;
+}
+body .top-rankings-section .ranking-chart,
+body .top-rankings-section .chart-container-live,
+body .top-rankings-section .ranking-tabs .tab-button,
+body .top-rankings-section .tf-bar {
+  background: #353535 !important;
+  border-color: #585858 !important;
+}
+body .top-rankings-section .chart-container-live {
+  background: #303030 !important;
+}
+body .top-rankings-section .tf-btn,
+body .top-rankings-section .ranking-tabs .tab-button {
+  color: #ffe66d !important;
+}
+body .top-rankings-section .tf-btn.active,
+body .top-rankings-section .ranking-tabs .tab-button.active {
+  background: #1769d2 !important;
+  color: #ffe66d !important;
+}
+body .top-rankings-section .tf-btn:hover,
+body .top-rankings-section .ranking-tabs .tab-button:hover {
+  background: #0f55ad !important;
+  color: #ffe66d !important;
+}
+body .live-chart text {
+  fill: #ffe66d;
+}
+body .auth-btn,
+body .btn-register,
+body .btn-primary,
+body .btn-secondary,
+body .btn-vote,
+body .tab-button,
+body .tf-btn,
+body .contact-link,
+body .modal-close,
+body .cv-close,
+body .rating-now-link,
+body button {
+  background: #1769d2 !important;
+  color: #ffe66d !important;
+  border-color: #0f55ad !important;
+}
+body .auth-btn:hover,
+body .btn-register:hover,
+body .btn-primary:hover,
+body .btn-secondary:hover,
+body .btn-vote:hover:not(:disabled),
+body .tab-button:hover,
+body .tf-btn:hover,
+body .contact-link:hover,
+body .modal-close:hover,
+body .cv-close:hover,
+body button:hover {
+  background: #0f55ad !important;
+  color: #ffe66d !important;
+}
+body .tab-button.active,
+body .tf-btn.active {
+  background: #0f55ad !important;
+  color: #ffe66d !important;
+}
+body .btn-vote:disabled,
+body button:disabled {
+  background: #555555 !important;
+  color: #b8ad6b !important;
+  border-color: #666666 !important;
+}
+body input,
+body textarea,
+body select {
+  background: #353535 !important;
+  color: #ffe66d !important;
+  border-color: #777777 !important;
+}
+body input::placeholder,
+body textarea::placeholder {
+  color: #d3c36a !important;
+}
