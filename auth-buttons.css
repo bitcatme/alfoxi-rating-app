@@ -367,3 +367,41 @@ body .hero-compact .hero-brand-bar .hero-description {
     justify-content: center;
   }
 }
+
+/* Dark blue panels across the hero, rankings, assets, points, and footer. */
+body .hero-compact .hero-brand-bar,
+body .rating-access .access-card,
+body .top-rankings-section,
+body .top-rankings-section .ranking-chart,
+body .top-rankings-section .chart-container-live,
+body .top-rankings-section .ranking-tabs .tab-button,
+body .top-rankings-section .tf-bar,
+body .ratings-section,
+body .asset-card,
+body .asset-card .chart-container,
+body .asset-card .card-header,
+body .asset-card .card-footer,
+body .voting-panel,
+body .voting-panel .panel-box,
+body .voting-panel .vote-message,
+body .contact-section {
+  background-color: #102b4d !important;
+  border-color: #244d77 !important;
+}
+body .top-rankings-section .chart-container-live,
+body .asset-card .chart-container {
+  background-color: #0a1e36 !important;
+}
+body .hero-compact .hero-brand-bar h1,
+body .hero-compact .hero-brand-bar .hero-subtitle,
+body .hero-compact .hero-brand-bar .hero-description,
+body .top-rankings-section *,
+body .ratings-section *,
+body .asset-card *,
+body .voting-panel *,
+body .contact-section * {
+  color: #ffe66d !important;
+}
+body .hero-compact .hero-brand-bar .logo-hero {
+  background: #f3f3f3 !important;
+}
