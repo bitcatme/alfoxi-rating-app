@@ -333,3 +333,37 @@ body .navbar .search-input {
 body .navbar .search-input::placeholder {
   color: #555555 !important;
 }
+
+body .hero-compact .hero-content {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+body .hero-compact .hero-brand-bar {
+  display: flex;
+  align-items: center;
+  flex: 1 1 340px;
+  min-width: 260px;
+  gap: 14px;
+  padding: 8px 14px;
+  background: #353535;
+  border: 1px solid #585858;
+  border-radius: 12px;
+}
+body .hero-compact .hero-brand-bar .logo-hero {
+  flex: 0 0 64px;
+  background: #f3f3f3;
+  border-radius: 8px;
+}
+body .hero-compact .hero-brand-bar h1,
+body .hero-compact .hero-brand-bar .hero-subtitle,
+body .hero-compact .hero-brand-bar .hero-description {
+  color: #ffe66d !important;
+}
+@media (max-width: 720px) {
+  body .hero-compact .hero-brand-bar {
+    flex-basis: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+}
