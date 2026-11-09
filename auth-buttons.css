@@ -522,3 +522,30 @@ body .contact-section * {
 body .hero-compact .hero-brand-bar .logo-hero {
   background: #f3f3f3 !important;
 }
+
+/* Hero section as one horizontal bar: shining #23ABFF background, black text */
+body .hero-section.hero-compact .hero-content {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  background: linear-gradient(110deg, #23ABFF 0%, #7fd0ff 45%, #23ABFF 55%, #1a97e6 100%) !important;
+  border: 1px solid #1a8ad0 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 4px 16px rgba(35, 171, 255, 0.45) !important;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar,
+body .hero-section.hero-compact .hero-content .rating-access,
+body .hero-section.hero-compact .hero-content .rating-access .access-card,
+body .hero-section.hero-compact .hero-content .hero-actions {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar .logo-hero {
+  background: transparent !important;
+}
+body .hero-section.hero-compact .hero-content *:not(.auth-btn):not(.cheese-icon):not(svg *) {
+  color: #000 !important;
+}
