@@ -574,3 +574,51 @@ body .hero-section.hero-compact .hero-content .hero-actions {
 body .hero-section.hero-compact .hero-content *:not(.auth-btn):not(.cheese-icon):not(svg *) {
   color: #000 !important;
 }
+body .hero-section.hero-compact .hero-content {
+  gap: 2px 12px;
+  padding: 2px 12px;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar {
+  flex: 1 1 260px;
+  min-width: 180px;
+  padding: 0;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar h1 {
+  font-size: 13px;
+  line-height: 1.1;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar .hero-subtitle {
+  font-size: 9.5px;
+  line-height: 1.15;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar .hero-description {
+  font-size: 9px;
+  line-height: 1.15;
+}
+body .hero-section.hero-compact .hero-content .hero-actions {
+  flex: 0 1 auto;
+  gap: 4px;
+}
+body .hero-section.hero-compact .hero-content .auth-btn {
+  padding: 5px 8px;
+  border-radius: 7px;
+  font-size: 10px;
+}
+body .hero-section.hero-compact .hero-content .rating-access {
+  gap: 4px;
+}
+body .hero-section.hero-compact .hero-content .access-card {
+  gap: 2px 4px;
+  padding: 2px 4px;
+  border-radius: 7px;
+}
+body .hero-section.hero-compact .hero-content .card-label {
+  font-size: 9px;
+}
+body .hero-section.hero-compact .hero-content .cheese-icon {
+  width: 11px;
+  height: 11px;
+}
+body .hero-section.hero-compact .hero-content .card-note {
+  font-size: 9px;
+}
