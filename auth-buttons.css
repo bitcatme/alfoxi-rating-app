@@ -548,12 +548,25 @@ body .hero-section.hero-compact .hero-content .hero-brand-bar .logo-hero {
   background: transparent !important;
 }
 body .hero-section.hero-compact .hero-content .hero-brand-bar {
+  gap: 0;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 body .hero-section.hero-compact .hero-content .hero-brand-bar .logo-hero {
-  width: 48px;
-  flex-basis: 48px;
+  display: none;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar h1 {
+  font-size: 16px;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar .hero-subtitle {
+  margin-top: 0;
+  font-size: 11px;
+  line-height: 1.2;
+}
+body .hero-section.hero-compact .hero-content .hero-brand-bar .hero-description {
+  margin-top: 0;
+  font-size: 10px;
+  line-height: 1.2;
 }
 body .hero-section.hero-compact .hero-content .hero-actions {
   margin: 0;
